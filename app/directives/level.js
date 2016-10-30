@@ -13,12 +13,15 @@ app.directive('level', function()
 
 
 
-var currentLevel = 1;
 
+// I possibly want to watch this manually so I don't have to apply it to the scope?
+var currentLevel = 0;
 
 
 app.controller('levelController', function($scope, tileFactory, actorFactory, commandFactory)
 {
+  $scope.currentLevel = currentLevel;
+
   $scope.gameData = {
     commandList : [
       [ // Level 1
@@ -85,16 +88,6 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
   };
 
 
-
-
-  var gameData = $scope.gameData; // use shorthand for this file.
-
-  $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
-
-  $scope.actors = [];
-  $scope.commandBank = [];
-
-
   var setupCommands = function() {
     var currentLevelData = gameData.GetCurrentCommandList();
 
@@ -120,6 +113,41 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
       }
     }
   };
+
+
+  $scope.setLevel = function(level) {
+    currentLevel = level;
+    $scope.currentLevel = currentLevel;
+
+    $scope.actors = [];
+    $scope.commandBank = [];
+    $scope.codeBank = [];
+
+    // setupActors and setupCommands are dependant on the currentLevel variable being set properly.
+
+    $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
+    setupActors();
+    setupCommands();
+  };
+
+  $scope.previousLevel = function() {
+    if(!$scope.gameData.mapData.hasOwnProperty(currentLevel-1)) return;
+    $scope.setLevel(currentLevel-1);
+  };
+
+  $scope.nextLevel = function() {
+    if(!$scope.gameData.mapData.hasOwnProperty(currentLevel+1)) return;
+    $scope.setLevel(currentLevel+1);
+  };
+
+
+
+  var gameData = $scope.gameData; // use shorthand for this file.
+
+  $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
+
+  $scope.actors = [];
+  $scope.commandBank = [];
 
   setupActors();
 
