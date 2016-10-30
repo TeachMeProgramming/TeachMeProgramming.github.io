@@ -1,16 +1,14 @@
-<div class="command-container">
-  <p class="command-container-title">Commands</p>
-  <div dnd-list="commandBank"
-       dnd-accept="['command']"
-       class="dropzone">
-    <div ng-repeat="command in commandBank"
-         dnd-draggable="command"
-         dnd-effect-allowed="move"
-         dnd-moved="commandBank.splice($index, 1)"
-         dnd-type="'command'"
-         class="grabable command">
-      {{command.name}}
-    </div>
-    <div class="command-placeholder dndPlaceholder"></div>
+<p class="command-container-title">Commands</p>
+<div dnd-list="commandBank"
+     dnd-accept="['command']"
+     class="dropzone">
+  <div ng-repeat="command in commandBank"
+       dnd-draggable="command"
+       dnd-effect-allowed="move"
+       dnd-moved="commandBank.splice($index, 1)"
+       dnd-type="'command'"
+       class="grabable command">
+    {{command.name}}
   </div>
+  <div class="command-placeholder dndPlaceholder"></div>
 </div>

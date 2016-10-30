@@ -4,7 +4,8 @@
 
 var app = angular.module('app', [
   'ngRoute',
-  'dndLists'
+  'dndLists',
+  'ngMaterial'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

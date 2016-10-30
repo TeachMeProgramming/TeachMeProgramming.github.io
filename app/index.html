@@ -8,16 +8,30 @@
   <title>Learn to Code</title>
   <link rel="stylesheet" href="sass/style.css">
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+  <!-- Angular Material font, not strictly required -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 </head>
 
 
-<body ng-app="app" scroll="no">
-
+<body ng-app="app">
   <game-menu></game-menu>
-  <game-board></game-board>
+    <main class="game-screen">
+      <game-board class="game-container"></game-board>
 
-  <command-bank></command-bank>
-  <code-bank></code-bank>
+      <code-bank class="command-container"></code-bank>
+      <command-bank class="command-container"></command-bank>
+    </main>
+  <footer>© Ian Gallacher</footer>
 
 
 
@@ -37,6 +51,5 @@
   <script src="directives/gameBoard.js"></script>
   <script src="directives/gameMenu.js"></script>
   <script src="directives/level.js"></script>
-
 </body>
 </html>

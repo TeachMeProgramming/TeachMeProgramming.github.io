@@ -1,26 +1,26 @@
 <header class="menu-container">
-  <h1 class="header-title">Learn to Code</h1>
+  <h1 class="header-title md-display-1">Learn to Code</h1>
 
   <div class="button-container">
-    <div class="button"
+    <md-button class="button"
          ng-class="{'button-disable': currentlyExecuting }"
-         ng-click="runCodeClicked()">Run Code</div>
-    <div class="button"
-         ng-click="resetMap(); currentlyExecuting=false">Reset Level</div>
+         ng-click="runCodeClicked()">Run Code</md-button>
+    <md-button class="button"
+         ng-click="resetMap(); currentlyExecuting=false">Reset Level</md-button>
   </div>
 
   <div class="button-container">
-    <div class="button"
+    <md-button class="button"
          ng-class="{'button-disable': !gameData.mapData.hasOwnProperty(currentLevel-1) }"
-         ng-click="previousLevel()"> PreviousLevel </div>
+         ng-click="previousLevel()"> PreviousLevel </md-button>
 
-    <div class="button"
+    <md-button class="button"
          ng-class="{'button-disable': !gameData.mapData.hasOwnProperty(currentLevel+1) }"
-         ng-click="nextLevel();">Next Level</div>
+         ng-click="nextLevel();">Next Level</md-button>
   </div>
 
 
-  <h1 class="header-title">{{currentLevel}}</h1>
+  <h2 class="header-title md-display-1">{{currentLevel}}</h2>
 
 
   <div class="linebreak"></div>
