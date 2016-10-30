@@ -1,0 +1,13 @@
+<header class="menu-container">
+  <h1 class="header-title">Learn to Code</h1>
+
+  <div class="button-container">
+    <div class="button"
+         ng-class="{'button-disable': currentlyExecuting }"
+         ng-click="runCodeClicked()">Run Code</div>
+    <div class="button"
+         ng-click="resetMap(); currentlyExecuting=false">Reset Level</div>
+  </div>
+
+  <div class="linebreak"></div>
+</header>

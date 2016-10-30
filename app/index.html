@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Learn to Code</title>
+  <link rel="stylesheet" href="sass/style.css">
+</head>
+
+
+<body ng-app="app" scroll="no">
+
+  <game-menu></game-menu>
+  <game-board></game-board>
+
+  <command-bank></command-bank>
+  <code-bank></code-bank>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular-route.min.js"></script>
+  <script src="angular-drag-and-drop-lists.min.js"></script>
+  <script src="app.js"></script>
+
+  <script src="factories/actorFactory.js"></script>
+  <script src="factories/commandFactory.js"></script>
+  <script src="factories/levelFactory.js"></script>
+  <script src="factories/tileFactory.js"></script>
+
+  <script src="directives/actors.js"></script>
+  <script src="directives/codeBank.js"></script>
+  <script src="directives/commandBank.js"></script>
+  <script src="directives/gameBoard.js"></script>
+  <script src="directives/gameMenu.js"></script>
+  <script src="directives/level.js"></script>
+
+</body>
+</html>
