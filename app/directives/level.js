@@ -13,21 +13,28 @@ app.directive('level', function()
 
 
 
-var currentLevel = 0;
+var currentLevel = 1;
 
-var gameData = {
+
+
+app.controller('levelController', function($scope, tileFactory, actorFactory, commandFactory)
+{
+  $scope.gameData = {
     commandList : [
       [ // Level 1
         "move",
         "move",
-        "move",
-        "move",
-        "rotate"
+        "move"
       ],
       [ // Level 2
         "move",
         "move",
         "move",
+        "move",
+        "move",
+        "move",
+        "rotateRight",
+        "rotateRight"
       ]
     ],
 
@@ -56,30 +63,32 @@ var gameData = {
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "E", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "P", "0", "0", "0", "0", "0", "0", "0", "0"],
+        [ "0", "0", "0", "0", "0", "0", "1", "1", "1", "0", "0", "0", "0", "0", "0"],
+        [ "0", "0", "0", "0", "0", "0", "1", "0", "1", "0", "0", "0", "0", "0", "0"],
+        [ "0", "0", "0", "0", "0", "0", "P", "0", "E", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"]
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
       ]
     ],
 
-    GetCurrentLevelData : function() {
+    GetCurrentCommandList : function() {
       return this.commandList[currentLevel];
     },
 
     GetCurrentMap : function() {
       return this.mapData[currentLevel];
     }
-};
+  };
 
 
-app.controller('levelController', function($scope, tileFactory, actorFactory, commandFactory)
-{
+
+
+  var gameData = $scope.gameData; // use shorthand for this file.
+
   $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
 
   $scope.actors = [];
@@ -87,15 +96,10 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
 
 
   var setupCommands = function() {
-    var currentLevelData = gameData.GetCurrentLevelData();
+    var currentLevelData = gameData.GetCurrentCommandList();
 
     for(var i = 0; i < currentLevelData.length; i++)
     {
-      // if(currentLevelData[i] == "move")
-      // {
-      //   $scope.commandBank.push(commandFactory.move());
-      // }
-
       var currentCommandName = currentLevelData[i];
 
       $scope.commandBank.push(commandFactory[currentCommandName]());

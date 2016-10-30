@@ -3,18 +3,32 @@
  */
 app.service('commandFactory', function() {
 
-  this.rotate = function()
+  this.rotateRight = function()
   {
     return {
       class: 'command',
-      name: 'rotate',
+      name: 'Rotate Right',
       direction: 'left',
-      execute: 'executeRotate'
+      execute: 'executeRotateRight'
     };
   };
 
-  this.executeRotate = function(command, actor) {
-    actor.rotate(command.direction);
+  this.executeRotateRight = function(command, actor) {
+    actor.rotateRight(command.direction);
+  };
+
+  this.rotateLeft = function()
+  {
+    return {
+      class: 'command',
+      name: 'Rotate Left',
+      direction: 'left',
+      execute: 'executeRotateLeft'
+    };
+  };
+
+  this.executeRotateLeft = function(command, actor) {
+    actor.rotateRight(command.direction);
   };
 
 

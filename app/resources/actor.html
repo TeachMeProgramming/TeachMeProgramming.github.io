@@ -2,7 +2,11 @@
   <div dnd-list="actor">
     <img ng-repeat="actor in actors" ng-src ="{{actor.src}}"
          ng-style="{left:actor.x*32 + 'px',
-                    top:actor.y*32 + 'px'}"
+                    top:actor.y*32 + 'px',
+                    'transform': 'rotate(' + actor.rotation + 'deg)',
+                    '-webkit-transform': 'rotate(' + actor.rotation + 'deg)',
+                    '-ms-transform': 'rotate(' + actor.rotation + 'deg)'
+                    }"
          class="actor">
     </img>
   </div>
