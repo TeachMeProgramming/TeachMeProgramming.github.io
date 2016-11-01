@@ -6,7 +6,7 @@
          ng-class="{'button-disable': currentlyExecuting }"
          ng-click="runCodeClicked()">Run Code</md-button>
     <md-button class="button"
-         ng-click="resetMap(); currentlyExecuting=false">Reset Level</md-button>
+         ng-click="resetCodeClicked();">Reset Level</md-button>
   </div>
 
   <div class="button-container">
@@ -20,8 +20,5 @@
   </div>
 
 
-  <h2 class="header-title md-display-1">{{currentLevel}}</h2>
-
-
-  <div class="linebreak"></div>
+  <h4 class="header-title md-display-1">Level: {{currentLevel}}</h4>
 </header>

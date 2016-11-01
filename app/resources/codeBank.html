@@ -7,7 +7,8 @@
        dnd-effect-allowed="move"
        dnd-moved="codeBank.splice($index, 1)"
        dnd-type="'command'"
-       class="grabable command">
+       class="grabable command"
+       ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid }">
     {{command.name}}
   </div>
   <div class="command-placeholder dndPlaceholder"></div>

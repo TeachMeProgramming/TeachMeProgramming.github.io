@@ -16,7 +16,6 @@ app.service('levelFactory', function(commandFactory, conditionalFactory, mapFact
     return factory.createLevel([
       commandFactory.rotate(),
       commandFactory.rotate(),
-      commandFactory.shoot(),
     ], [], mapFactory.getFirstLevel());
   };
 });

@@ -1,3 +1,67 @@
+@-webkit-keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@-moz-keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@-ms-keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@-webkit-keyframes mymove {
+  0%   {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@-moz-keyframes mymove {
+  0%   {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@-ms-keyframes mymove {
+  0%   {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@keyframes mymove {
+  0%   {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
 * {
   margin: 0;
   padding: 0; }
@@ -45,8 +109,8 @@ footer {
 
 .actor {
   position: absolute;
-  -webkit-transition: left 2s, top 2s, -webkit-transform 2s;
-  transition: left 2s, top 2s, transform 2s; }
+  -webkit-transition: linear, left 1.5s, top 1.5s, -webkit-transform 1.5s;
+  transition: linear, left 1.5s, top 1.5s, transform 1.5s; }
 
 .actor-box {
   position: absolute;
@@ -65,13 +129,25 @@ footer {
 
 .dropzone {
   height: 90%;
-  background: #CCC; }
+  background: #CCC;
+  padding: 3px; }
 
 .command {
   margin: 5px;
   padding: 5px;
   background: #FDD;
   min-height: 24px; }
+
+.command-executing {
+  background: #393; }
+
+.command-invalid {
+  background: #933;
+  animation: mymove 0.2s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 3;
+  animation-iteration-count: 3; }
 
 .command-placeholder {
   margin: 5px;
@@ -124,11 +200,11 @@ footer {
   padding: 10px 0 10px 0; }
 
 .button {
-  background-color: #eee;
+  background-color: #AAC;
   float: left;
   width: 120px;
   padding: 10px;
-  margin: 100px 5px; }
+  margin: 0px 5px; }
 
 .button:hover {
   cursor: pointer;

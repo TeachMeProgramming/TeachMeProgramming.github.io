@@ -55,9 +55,7 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"]
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
       ],
       [ // Level 2
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
@@ -72,9 +70,22 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
+      ],
+      [ // Invalid no-win level; used for testing errors in user's code.
+        [ "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"], //1
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //2
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //3
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //4
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //5
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //6
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //7
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //8
+        [ "0", "0", "0", "0", "0", "0", "P", "0", "0", "0", "0", "0", "0", "0", "0"], //9
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //10
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //11
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //12
+        [ "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"]  //13
       ]
     ],
 
@@ -110,6 +121,10 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
           $scope.player = actorFactory.player(x,y);
           $scope.actors.push($scope.player);
         }
+        if(currentMap[y][x] == "E")
+        {
+          $scope.victorySquare = { x: x, y: y };
+        }
       }
     }
   };
@@ -119,14 +134,13 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
     currentLevel = level;
     $scope.currentLevel = currentLevel;
 
-    $scope.actors = [];
     $scope.commandBank = [];
     $scope.codeBank = [];
 
     // setupActors and setupCommands are dependant on the currentLevel variable being set properly.
 
     $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
-    setupActors();
+    $scope.resetActors();
     setupCommands();
   };
 
@@ -140,24 +154,34 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
     $scope.setLevel(currentLevel+1);
   };
 
+  $scope.checkVictory = function() {
+    if($scope.player.x == $scope.victorySquare.x && $scope.player.y == $scope.victorySquare.y)
+    {
+      $scope.nextLevel();
+    }
+  };
+
 
 
   var gameData = $scope.gameData; // use shorthand for this file.
 
-  $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
+  $scope.map = tileFactory.parseMap($scope.gameData.GetCurrentMap());
 
   $scope.actors = [];
   $scope.commandBank = [];
 
   setupActors();
-
   setupCommands();
 
-  $scope.resetMap = function() {
+  $scope.resetActors = function() {
+    $scope.currentlyExecuting=false;
+
     $scope.actors = [];
-    // $scope.commandBank = [];
-    // $scope.codeBank = [ ];
-    // setupCommands();
     setupActors();
+
+
+    $scope.codeBank.forEach(function(command) {
+      command.isValid = true;
+    });
   }
 });

@@ -1,12 +1,61 @@
 =translationTransition($time)
-  -webkit-transition: left $time, top $time, -webkit-transform $time
-  transition: left $time, top $time, transform $time
+  -webkit-transition:  linear, left $time, top $time, -webkit-transform $time
+  transition: linear, left $time, top $time, transform $time
 
-=center-vertically($offset)  // Centers block elements vertically
-  padding: $offset 0 $offset 0
+=keyframes($name) // See http://stackoverflow.com/questions/18894981/sass-not-scss-syntax-for-css3-keyframe-animation
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
 
-$menu-padding-for-vertical-centering: 10px
+=animationIterationCount($iterations)
+  -webkit-animation-iteration-count: $iterations /* Safari 4.0 - 8.0, according to w3schools. See http://www.w3schools.com/cssref/css3_pr_animation-iteration-count.asp*/
+  animation-iteration-count: $iterations
 
+=shake()
+  animation: mymove 0.2s
+  -webkit-animation-timing-function: linear /* Safari 4.0 - 8.0 */
+  animation-timing-function: linear
+  +animationIterationCount(3) // Not supported by IE 9 and earlier
+
+
++keyframes(mymove)
+  from
+    transform: translate(2px, 0px)
+  to
+    transform: translate(20px, 0px)
+
+
++keyframes(mymove)
+  0%  // Start at the current location.
+    transform: translate(0px, 0px)
+  25%
+    transform: translate(7px, 0px)
+  50%
+    transform: translate(0px, 0px)
+  75%
+    transform: translate(-7px, 0px)
+  100%
+    transform: translate(0px, 0px) // End at the initial location.
+
+
+
+//@keyframes spaceboots
+//  0% transform: translate(2px, 1px) rotate(0deg)
+//  10% transform: translate(-1px, -2px) rotate(-1deg)
+//  20% transform: translate(-3px, 0px) rotate(1deg)
+//  30% transform: translate(0px, 2px) rotate(0deg)
+//  40% transform: translate(1px, -1px) rotate(1deg)
+//  50% transform: translate(-1px, 2px) rotate(-1deg)
+//  60% transform: translate(-3px, 1px) rotate(0deg)
+//  70% transform: translate(2px, 1px) rotate(-1deg)
+//  80% transform: translate(-1px, -1px) rotate(1deg)
+//  90% transform: translate(2px, 2px) rotate(0deg)
+//  100% transform: translate(1px, -2px) rotate(-1deg)
 
 
 *
@@ -24,6 +73,7 @@ body
   display: flex
   min-height: 100vh
   flex-direction: column
+
 
 body, html
   margin: 0
@@ -44,7 +94,6 @@ footer
   color: #EEE
   padding: 0 50px
 
-
 .game-screen
   display: flex
   flex-direction: row
@@ -59,7 +108,7 @@ footer
 
 .actor
   position: absolute
-  +translationTransition(2s)
+  +translationTransition(1.5s)
 
 .actor-box
   position: absolute
@@ -88,6 +137,7 @@ footer
 .dropzone
   height: 90%
   background: #CCC
+  padding: 3px
 
 .command
   margin: 5px
@@ -95,6 +145,23 @@ footer
   background: #FDD
   min-height: 24px
 
+.command-executing
+  background: #393
+
+.command-invalid
+  background: #933
+  +shake()
+
+
+//.command-invalid::after  // CSS triangle http://codepen.io/chriscoyier/pen/lotjh
+//  content: ""
+//  position: absolute
+//  top: 100%
+//  left: 50%
+//  margin-left: -5px
+//  border-width: 50px
+//  border-style: solid
+//  border-color: transparent transparent transparent #555
 
 .command-placeholder
   margin: 5px
@@ -168,16 +235,16 @@ footer
   padding: 0 10px
   float: left
   margin-left: 10px
-  +center-vertically($menu-padding-for-vertical-centering)
+  padding: 10px 0 10px 0
 
 
 
 .button
-  background-color: #eee
+  background-color: #AAC
   float: left
   width: 120px
   padding: 10px
-  margin: 100px 5px
+  margin: 0px 5px
 
 
 
