@@ -6,10 +6,25 @@
        dnd-draggable="command"
        dnd-effect-allowed="move"
        dnd-moved="codeBank.splice($index, 1)"
-       dnd-type="'command'"
+       dnd-type="'command'">
+
+
+    <div
        class="grabable command"
-       ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid }">
-    {{command.name}}
+       ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid}">
+          {{command.name}}
+    </div>
+
+    <div
+      class="command-invalid-tooltip"
+      ng-if="command.isValid==false">
+      Tried to move character off map.
+    </div>
   </div>
+
+
+
+
+
   <div class="command-placeholder dndPlaceholder"></div>
 </div>

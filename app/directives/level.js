@@ -15,12 +15,14 @@ app.directive('level', function()
 
 
 // I possibly want to watch this manually so I don't have to apply it to the scope?
-var currentLevel = 0;
+var currentLevel = 2;
+
 
 
 app.controller('levelController', function($scope, tileFactory, actorFactory, commandFactory)
 {
   $scope.currentLevel = currentLevel;
+
 
   $scope.gameData = {
     commandList : [
@@ -38,7 +40,14 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
         "move",
         "rotateRight",
         "rotateRight"
-      ]
+      ],
+      [ // Invalid no-win level; used for testing errors in user's code.
+        "move",
+        "rotateRight",
+        "rotateRight",
+        "rotateRight",
+        "rotateRight"
+      ] // IMPORTANT: If you want to create a new level, be sure to add a new entry in BOTH gameData AND mapData.
     ],
 
     mapData : [
@@ -86,7 +95,7 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //11
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //12
         [ "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"]  //13
-      ]
+      ]// IMPORTANT: If you want to create a new level, be sure to add a new entry in BOTH gameData AND mapData.
     ],
 
     GetCurrentCommandList : function() {

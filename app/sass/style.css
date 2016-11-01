@@ -136,7 +136,8 @@ footer {
   margin: 5px;
   padding: 5px;
   background: #FDD;
-  min-height: 24px; }
+  min-height: 24px;
+  border-radius: 5px; }
 
 .command-executing {
   background: #393; }
@@ -148,6 +149,25 @@ footer {
   animation-timing-function: linear;
   -webkit-animation-iteration-count: 3;
   animation-iteration-count: 3; }
+
+.command-invalid-tooltip {
+  background: #ccc;
+  position: absolute;
+  transform: translatex(-110%) translatey(-100%);
+  margin-top: -4px;
+  padding: 5px;
+  border: 1px solid #933;
+  border-radius: 5px; }
+
+.command-invalid-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #933; }
 
 .command-placeholder {
   margin: 5px;
@@ -204,7 +224,8 @@ footer {
   float: left;
   width: 120px;
   padding: 10px;
-  margin: 0px 5px; }
+  margin: 0px 5px;
+  border-radius: 3px; }
 
 .button:hover {
   cursor: pointer;

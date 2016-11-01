@@ -75,7 +75,7 @@ app.service('commandFactory', function() {
     } else {
       command.isValid = false;
       command.currentlyExecuting = false;
-      $scope.currentlyExecuting = false;
+      $scope.currentlyExecuting = false; // Yes, this is not defined. However, by accessing an undefined variable, code execution is halted. That is a desired effect.
     }
   };
 });

@@ -42,6 +42,9 @@
   100%
     transform: translate(0px, 0px) // End at the initial location.
 
+=roundCorners()
+  border-radius: 5px // rounded corners
+
 
 
 //@keyframes spaceboots
@@ -139,11 +142,16 @@ footer
   background: #CCC
   padding: 3px
 
+
+
+$commandMargin: 5px // Space inbetween commands. Needed to calculate the position of command tooltips.
+$tooltipBorderWidth: 1px // command-invalid-tooltip red border.
 .command
-  margin: 5px
+  margin: $commandMargin
   padding: 5px
   background: #FDD
   min-height: 24px
+  +roundCorners
 
 .command-executing
   background: #393
@@ -153,22 +161,35 @@ footer
   +shake()
 
 
-//.command-invalid::after  // CSS triangle http://codepen.io/chriscoyier/pen/lotjh
-//  content: ""
-//  position: absolute
-//  top: 100%
-//  left: 50%
-//  margin-left: -5px
-//  border-width: 50px
-//  border-style: solid
-//  border-color: transparent transparent transparent #555
+.command-invalid-tooltip
+  background: #ccc
+  position: absolute
+  transform: translatex(-110%) translatey(-100%) // Translatex to position the tooltip to the left of the command, translatey to align with the command. The translatey goes hand in hand with margin-top.
+  margin-top: -($commandMargin - $tooltipBorderWidth) // tooltips are larger because of the border. In order to center vertically, we have to take that into account.
+  padding: 5px
+  border: $tooltipBorderWidth solid #933
+  +roundCorners
+
+.command-invalid-tooltip::after // CSS triangle http://codepen.io/chriscoyier/pen/lotjh
+  content: ""
+  position: absolute
+
+  top: 50% // center vertically.
+  transform: translateY(-50%) // center vertically.
+
+  left: 100% // the width of this element.
+  //margin-left: 10px
+  border-width: 8px
+  border-style: solid
+  border-color: transparent transparent transparent #933
+
+
 
 .command-placeholder
   margin: 5px
   padding: 5px
   background: #DDD
   min-height: 24px
-
 
 .sublist
   list-style-type: none
@@ -245,6 +266,7 @@ footer
   width: 120px
   padding: 10px
   margin: 0px 5px
+  border-radius: 3px
 
 
 
