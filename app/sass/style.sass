@@ -46,21 +46,6 @@
   border-radius: 5px // rounded corners
 
 
-
-//@keyframes spaceboots
-//  0% transform: translate(2px, 1px) rotate(0deg)
-//  10% transform: translate(-1px, -2px) rotate(-1deg)
-//  20% transform: translate(-3px, 0px) rotate(1deg)
-//  30% transform: translate(0px, 2px) rotate(0deg)
-//  40% transform: translate(1px, -1px) rotate(1deg)
-//  50% transform: translate(-1px, 2px) rotate(-1deg)
-//  60% transform: translate(-3px, 1px) rotate(0deg)
-//  70% transform: translate(2px, 1px) rotate(-1deg)
-//  80% transform: translate(-1px, -1px) rotate(1deg)
-//  90% transform: translate(2px, 2px) rotate(0deg)
-//  100% transform: translate(1px, -2px) rotate(-1deg)
-
-
 *
   margin: 0
   padding: 0
@@ -133,24 +118,35 @@ footer
   width: 20%
   font-size: 150%
 
-//.command-container-title
-//  font-size: 150%
-//  padding-left: 30px
+
+$commandMargin: 5px // Space inbetween commands. Needed to calculate the position of command tooltips.
+$commandHeight: 50px // CommandHeight. Needed for placeholder elements.
+$tooltipBorderWidth: 1px // command-invalid-tooltip red border.
+$dropzoneBGColor: #ccc
 
 .dropzone
   height: 90%
-  background: #CCC
+  background: $dropzoneBGColor
   padding: 3px
+  min-height: 40px
+  +roundCorners
+
+.dndDraggingSource
+  display: none
 
 
 
-$commandMargin: 5px // Space inbetween commands. Needed to calculate the position of command tooltips.
-$tooltipBorderWidth: 1px // command-invalid-tooltip red border.
 .command
-  margin: $commandMargin
+  min-height: $commandHeight
   padding: 5px
   background: #FDD
-  min-height: 24px
+  border: 2px solid $dropzoneBGColor // Margins do not work with the angularDND stuff, borders the same color as the BG work better.
+  +roundCorners
+
+.command-placeholder
+  height: $commandHeight
+  background: #DDD
+  border: 2px solid $dropzoneBGColor // Margins do not work with the angularDND stuff, borders the same color as the BG work better.
   +roundCorners
 
 .command-executing
@@ -158,7 +154,7 @@ $tooltipBorderWidth: 1px // command-invalid-tooltip red border.
 
 .command-invalid
   background: #933
-  +shake()
+  +shake
 
 
 .command-invalid-tooltip
@@ -182,30 +178,6 @@ $tooltipBorderWidth: 1px // command-invalid-tooltip red border.
   border-width: 8px
   border-style: solid
   border-color: transparent transparent transparent #933
-
-
-
-.command-placeholder
-  margin: 5px
-  padding: 5px
-  background: #DDD
-  min-height: 24px
-
-.sublist
-  list-style-type: none
-  background: #ccc
-  padding: 5px
-  padding-right: 0
-  height: auto
-  min-height: 50px
-
-
-.sublist li
-  margin: 5px
-  margin-right: 0
-  padding: 5px
-
-
 
 
 /////////////////////
@@ -293,7 +265,7 @@ $tooltipBorderWidth: 1px // command-invalid-tooltip red border.
   cursor: -webkit-grab
 
 
-.grabable:hover
+.grabable-hover
   background-color: #888
 
 

@@ -1,30 +1,59 @@
-<p class="command-container-title">Code</p>
-<div dnd-list="codeBank"
-     dnd-accept="['command']"
-     class="dropzone">
-  <div ng-repeat="command in codeBank"
-       dnd-draggable="command"
-       dnd-effect-allowed="move"
-       dnd-moved="codeBank.splice($index, 1)"
-       dnd-type="'command'">
+<script type="text/ng-template" id="list.html">
+
+  <!-- dnd-list = The name of the container we are droppping commands into. set list with ng-init before using ng-include-->
+  <div dnd-list="list"
+       dnd-accept="['command']"
+       class="dropzone">
+    <div ng-repeat="command in list"
+         dnd-draggable="command"
+         dnd-effect-allowed="move"
+         dnd-moved="list.splice($index, 1)"
+         dnd-type="'command'">
 
 
-    <div
-       class="grabable command"
-       ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid}">
-          {{command.name}}
+      <div ng-include="'item.html'" style="height:100%"></div>
     </div>
 
-    <div
-      class="command-invalid-tooltip"
-      ng-if="command.isValid==false">
-      Tried to move character off map.
-    </div>
+    <div class="command-placeholder dndPlaceholder"></div>
   </div>
+</script>
 
 
 
 
 
-  <div class="command-placeholder dndPlaceholder"></div>
+<script type="text/ng-template" id="item.html">
+<div
+  class="grabable command"
+  ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid}"
+  ng-mouseover="mouseIn($event)"
+  ng-mouseout="mouseOut($event)">
+  {{command.name}}
+
+
+  <!--Recursive Container.-->
+  <div
+    class="dropzone"
+    dnd-accept="['command']"
+    ng-if="command.name=='For Loop'">
+         <div ng-include="'list.html'" ng-init="list=command.contents" style="height:100%"></div>
+  </div>
 </div>
+
+<div
+  class="command-invalid-tooltip"
+  ng-if="command.isValid==false">
+
+  Characters can not be moved off the map.
+</div>
+</script>
+
+
+
+<p class="command-container-title">Code</p>
+
+
+
+<div ng-include="'list.html'" style="height:100%">
+</div>
+

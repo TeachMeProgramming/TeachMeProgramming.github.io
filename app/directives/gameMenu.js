@@ -15,13 +15,10 @@ app.controller('gameMenu', function($scope, $timeout, commandFactory)
 {
   $scope.currentlyExecuting = false;
 
-  var commandIndex = 0;
-
 
   $scope.runCodeClicked = function () {
     if($scope.currentlyExecuting || $scope.codeBank.length <= 0) return;
     $scope.currentlyExecuting=true; // executeCode() checks for this every frame. Be sure to set it before executeCode()!
-    commandIndex = 0;
 
 
     $scope.codeBank.forEach(function(command) {
@@ -29,7 +26,7 @@ app.controller('gameMenu', function($scope, $timeout, commandFactory)
     });
 
 
-    executeCode();
+    $scope.executeCodeBlock($scope.codeBank);
   };
 
   $scope.resetCodeClicked = function () {
@@ -37,22 +34,29 @@ app.controller('gameMenu', function($scope, $timeout, commandFactory)
   };
 
 
+
   var timeoutDuration = 1000;
-  var currentCommand;
-  var executeCode = function()
+
+  // Give each block of code it's own scope. Only one command can be highlighted per block.
+  $scope.executeCodeBlock = function(codeBlock) {
+    var commandIndex = 0;
+    executeCode(codeBlock, commandIndex);
+  };
+
+  // execute a specific line inside a specifc block of code.
+  var executeCode = function(codeBlock, commandIndex)
   {
-    if(currentCommand != null) currentCommand.currentlyExecuting = false; // No longer highlight previous command.
-    if($scope.currentlyExecuting == true && commandIndex < $scope.codeBank.length)
+    if($scope.currentlyExecuting == true && commandIndex < codeBlock.length)
     {
-      currentCommand= $scope.codeBank[commandIndex];
+      var currentCommand = codeBlock[commandIndex];
       currentCommand.currentlyExecuting = true; // Highlight command that is currently running.
       var functionName = currentCommand.execute;
       commandFactory[functionName](currentCommand, $scope.player, $scope.gameData.GetCurrentMap());
-      commandIndex += 1;
 
       $timeout(function ()
       {
-        executeCode();
+        currentCommand.currentlyExecuting = false;
+        executeCode(codeBlock,commandIndex+1);
       }, timeoutDuration);
       // Don't check for victory until the player gets to the end of his path.
       $timeout($scope.checkVictory, timeoutDuration * 2); // add 2000 to account for animation time. .actor transition = 2s

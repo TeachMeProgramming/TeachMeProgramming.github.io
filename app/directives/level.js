@@ -43,6 +43,7 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
       ],
       [ // Invalid no-win level; used for testing errors in user's code.
         "move",
+        "forLoop",
         "rotateRight",
         "rotateRight",
         "rotateRight",

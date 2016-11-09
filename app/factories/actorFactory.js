@@ -2,8 +2,6 @@
  * Created by IanGallacher on 10/20/2016.
  */
 app.service('actorFactory', function() {
-  var factory = this;
-
   this.player = function(x,y) {
     return {
       class: 'actor',

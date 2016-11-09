@@ -14,4 +14,19 @@ app.directive('codeBank', function()
 app.controller('codeBankController', function($scope)
 {
   $scope.codeBank = [];
+  $scope.list=$scope.codeBank; // used for nesting code.
+
+  $scope.mouseIn = function($event)
+  {
+    if($event.target.classList.contains('command'))
+    {
+      $event.target.classList.add("grabable-hover");
+      $event.stopPropagation();
+    }
+  };
+
+  $scope.mouseOut = function($event)
+  {
+    $event.target.classList.remove("grabable-hover");
+  };
 });

@@ -23,7 +23,7 @@
     transform: translate(0px, 0px); }
   25% {
     transform: translate(7px, 0px); }
-  50% {
+  50%  {
     transform: translate(0px, 0px); }
   75% {
     transform: translate(-7px, 0px); }
@@ -34,7 +34,7 @@
     transform: translate(0px, 0px); }
   25% {
     transform: translate(7px, 0px); }
-  50% {
+  50%  {
     transform: translate(0px, 0px); }
   75% {
     transform: translate(-7px, 0px); }
@@ -45,7 +45,7 @@
     transform: translate(0px, 0px); }
   25% {
     transform: translate(7px, 0px); }
-  50% {
+  50%  {
     transform: translate(0px, 0px); }
   75% {
     transform: translate(-7px, 0px); }
@@ -56,7 +56,7 @@
     transform: translate(0px, 0px); }
   25% {
     transform: translate(7px, 0px); }
-  50% {
+  50%  {
     transform: translate(0px, 0px); }
   75% {
     transform: translate(-7px, 0px); }
@@ -129,14 +129,25 @@ footer {
 
 .dropzone {
   height: 90%;
-  background: #CCC;
-  padding: 3px; }
+  background: #ccc;
+  padding: 3px;
+  min-height: 40px;
+  border-radius: 5px; }
+
+.dndDraggingSource {
+  display: none; }
 
 .command {
-  margin: 5px;
+  min-height: 50px;
   padding: 5px;
   background: #FDD;
-  min-height: 24px;
+  border: 2px solid #ccc;
+  border-radius: 5px; }
+
+.command-placeholder {
+  height: 50px;
+  background: #DDD;
+  border: 2px solid #ccc;
   border-radius: 5px; }
 
 .command-executing {
@@ -168,25 +179,6 @@ footer {
   border-width: 8px;
   border-style: solid;
   border-color: transparent transparent transparent #933; }
-
-.command-placeholder {
-  margin: 5px;
-  padding: 5px;
-  background: #DDD;
-  min-height: 24px; }
-
-.sublist {
-  list-style-type: none;
-  background: #ccc;
-  padding: 5px;
-  padding-right: 0;
-  height: auto;
-  min-height: 50px; }
-
-.sublist li {
-  margin: 5px;
-  margin-right: 0;
-  padding: 5px; }
 
 .game-container {
   position: relative;
@@ -245,7 +237,7 @@ footer {
   cursor: -moz-grab;
   cursor: -webkit-grab; }
 
-.grabable:hover {
+.grabable-hover {
   background-color: #888; }
 
 .tooltip {
