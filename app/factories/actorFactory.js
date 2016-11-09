@@ -34,7 +34,10 @@ app.service('actorFactory', function() {
       },
 
       rotateRight: function() {
-        this.rotation =  (this.rotation+90)%360;
+        this.rotation = (this.rotation+90); // Don't use (this.rotation+90)%360;
+                                            // If modulo is used, the jump from left facing to top facing will go
+                                            // counterclockwise instead of clockwise.
+                                            // In other words, there will be three "rotateLefts" instead of one "rotateRight."
       }
     };
   };
