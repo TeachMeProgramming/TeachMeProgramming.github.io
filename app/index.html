@@ -14,7 +14,7 @@
 </head>
 
 
-<body ng-app="app">
+<body ng-app="app" ng-controller="gameController">
   <game-menu></game-menu>
     <main class="game-screen">
       <game-board class="game-container"></game-board>
@@ -26,10 +26,13 @@
 
 
 
+  <!--Time to load scripts-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular-route.min.js"></script>
   <script src="angular-drag-and-drop-lists.min.js"></script>
   <script src="app.js"></script>
+
+  <script src="game/gameController.js"></script>
 
   <script src="factories/actorFactory.js"></script>
   <script src="factories/commandFactory.js"></script>

@@ -13,19 +13,20 @@ app.service('actorFactory', function() {
 
 
       move: function() {
-        if(this.rotation == 0)
+        var absoluteRotation = this.rotation % 360;
+        if(absoluteRotation == 0)
         {
           this.y -= 1;
         }
-        else if(this.rotation == 90)
+        else if(absoluteRotation == 90)
         {
           this.x += 1;
         }
-        else if(this.rotation == 180)
+        else if(absoluteRotation == 180)
         {
           this.y += 1;
         }
-        else if(this.rotation == 270)
+        else if(absoluteRotation == 270)
         {
           this.x -= 1;
         }
@@ -36,6 +37,27 @@ app.service('actorFactory', function() {
                                             // If modulo is used, the jump from left facing to top facing will go
                                             // counterclockwise instead of clockwise.
                                             // In other words, there will be three "rotateLefts" instead of one "rotateRight."
+      },
+
+      wallInFront: function(gameContext) {
+        var absoluteRotation = this.rotation % 360;
+        if(absoluteRotation == 0 && gameContext.gameData.GetCurrentMap()[this.y-1][this.x] == '0')
+        {
+          return true;
+        }
+        else if(absoluteRotation == 90 && gameContext.gameData.GetCurrentMap()[this.y][this.x+1] == '0')
+        {
+          return true;
+        }
+        else if(absoluteRotation == 180 && gameContext.gameData.GetCurrentMap()[this.y+1][this.x] == '0')
+        {
+          return true;
+        }
+        else if(absoluteRotation == 270 && gameContext.gameData.GetCurrentMap()[this.y][this.x-1] == '0')
+        {
+          return true;
+        }
+        return false;
       }
     };
   };

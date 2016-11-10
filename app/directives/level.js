@@ -47,7 +47,8 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
         "rotateRight",
         "rotateRight",
         "rotateRight",
-        "rotateRight"
+        "rotateRight",
+        "ifStatement"
       ] // IMPORTANT: If you want to create a new level, be sure to add a new entry in BOTH gameData AND mapData.
     ],
 
@@ -83,15 +84,15 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
       ],
       [ // Invalid no-win level; used for testing errors in user's code.
-        [ "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"], //1
-        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //2
+        [ "1", "0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "1"], //1
+        [ "0", "0", "0", "0", "0", "0", "0", "P", "0", "0", "0", "0", "0", "0", "0"], //2
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //3
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //4
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //5
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //6
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //7
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //8
-        [ "0", "0", "0", "0", "0", "0", "P", "0", "0", "0", "0", "0", "0", "0", "0"], //9
+        [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //9
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //10
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //11
         [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"], //12
@@ -165,6 +166,7 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
   };
 
   $scope.checkVictory = function() {
+    // If the the following line of code throws an error, Make sure the map has a victory square.
     if($scope.player.x == $scope.victorySquare.x && $scope.player.y == $scope.victorySquare.y)
     {
       $scope.nextLevel();

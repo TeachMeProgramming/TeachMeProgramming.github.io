@@ -11,13 +11,14 @@ app.service('commandFactory', function() {
       direction: 'left',
       currentlyExecuting: false,
       isValid: true,
-      execute: 'executeRotateRight' // Name of the function we are going to executew.
+      functionName: 'executeRotateRight' // Use commandFactory[currentCommand.functionName] to execute functions.
     };
   };
 
   // every command takes command, actor, and gameMap as arguments, even if it does not need them.
-  this.executeRotateRight = function(command, actor, gameMap) {
+  this.executeRotateRight = function(command, actor, gameContext) {
     actor.rotateRight(command.direction);
+    gameContext.commandFinished();
   };
 
   this.rotateLeft = function()
@@ -28,31 +29,33 @@ app.service('commandFactory', function() {
       direction: 'left',
       currentlyExecuting: false,
       isValid: true,
-      execute: 'executeRotateLeft'
+      functionName: 'executeRotateLeft'
     };
   };
 
-  this.executeRotateLeft = function(command, actor, gameMap) {
+  this.executeRotateLeft = function(command, actor, gameContext) {
     actor.rotateRight(command.direction);
+    gameContext.commandFinished();
   };
 
   this.forLoop = function()
   {
     return {
       class: 'command',
-      contents: [],
+      contents: [], // the commands we iterate through when running the forLoop.
       name: 'For Loop', // must be named For Loop to be compatible with the ng-if (display dropzone) in codeBank.html.
       direction: 'left',
       currentlyExecuting: false,
       isValid: true,
-      execute: 'executeForLoop'
+      functionName: 'executeForLoop'
     };
   };
 
 
 
-  this.executeForLoop = function(command, actor, gameMap) {
-    $scope.executeCodeBlock(command.contents);
+  this.executeForLoop = function(command, actor, gameContext) {
+    gameContext.executeCodeBlock(command.contents);
+    // gameContext.commandFinished();
   };
 
 
@@ -64,12 +67,12 @@ app.service('commandFactory', function() {
       direction: 'up',
       currentlyExecuting: false,
       isValid: true,
-      execute: 'executeMove'
+      functionName: 'executeMove'
     };
   };
 
 
-  // Takes into acount the new player position before moving.
+  // Takes into account the new player position before moving.
   // var lookForCollision = function(actor, gameMap)
   // {
   //     if(actor.rotation == 0)
@@ -94,14 +97,41 @@ app.service('commandFactory', function() {
       return(gameMap[actor.y][actor.x] == "0");
   };
 
-  this.executeMove = function(command, actor, gameMap) {
+  this.executeMove = function(command, actor, gameContext)
+  {
     actor.move(command.direction);
 
     // Move the character BEFORE checking for collisions. Give the user a chance to SEE what went wrong, rather than a simple error message.
-    if( currentCollision(actor, gameMap) ) {
+    if( currentCollision(actor, gameContext.gameData.GetCurrentMap()) )
+    {
       command.isValid = false;
       command.currentlyExecuting = false;
-      $scope.currentlyExecuting = false; // Yes, this is not defined. However, by accessing an undefined variable, code execution is halted. That is a desired effect.
+      gameContext.currentlyExecuting = false; // Yes, this is not defined. However, by accessing an undefined variable, code execution is halted. That is a desired effect.
+    }
+    gameContext.commandFinished();
+  };
+
+
+  this.ifStatement = function()
+  {
+    return {
+      class: 'command',
+      contents: [], // the commands we iterate through when running the forLoop.
+      name: 'If Wall in Front', // must be named 'If Wall in Front' to be compatible with the ng-if (display dropzone) in codeBank.html.
+      direction: 'left',
+      currentlyExecuting: false,
+      isValid: true,
+      functionName: 'executeIfStatement'
+    };
+  };
+
+
+
+  this.executeIfStatement = function(command, actor, gameContext) {
+    if(actor.wallInFront(gameContext)) {
+      gameContext.executeCodeBlock(command.contents);
+    } else {
+      gameContext.commandFinished();
     }
   };
 });

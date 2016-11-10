@@ -8,14 +8,14 @@ app.service('levelFactory', function(commandFactory, conditionalFactory, mapFact
     return {
       commands: commandBank,
       conditionals: conditionalBank,
-      map: map,
+      map: map
     };
-  }
+  };
 
   this.firstLevel = function() {
     return factory.createLevel([
       commandFactory.rotate(),
-      commandFactory.rotate(),
+      commandFactory.rotate()
     ], [], mapFactory.getFirstLevel());
   };
 });
