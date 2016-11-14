@@ -21,13 +21,13 @@ app.controller('gameMenu', function($scope)
     $scope.currentlyExecuting=true; // executeCodeLine() checks for this every frame. Be sure to set it before executeCodeLine()!
 
 
-    $scope.codeBank.forEach(function(command) {
+    $scope.codeBank.contents.forEach(function(command) {
       command.isValid = true;
       //command.target.classList.remove("grabable-hover"); // CURRENTLY DOES NOT WORK
     });
 
 
-    $scope.executeCodeBlock($scope.codeBank);
+    $scope.startCodeExecution();
   };
 
   $scope.resetCodeClicked = function () {

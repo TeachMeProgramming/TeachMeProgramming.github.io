@@ -16,14 +16,13 @@
 
 <body ng-app="app" ng-controller="gameController">
   <game-menu></game-menu>
-    <main class="game-screen">
+    <main data-split-pane class="game-screen">
       <game-board class="game-container"></game-board>
 
-      <code-bank class="command-container"></code-bank>
-      <command-bank class="command-container"></command-bank>
+      <code-bank data-split-pane-component class="command-container"></code-bank>
+      <command-bank data-split-pane-component class="command-container"></command-bank>
     </main>
   <footer>© Ian Gallacher</footer>
-
 
 
   <!--Time to load scripts-->
@@ -33,8 +32,10 @@
   <script src="app.js"></script>
 
   <script src="game/gameController.js"></script>
+  <script src="game/level.js"></script>
 
   <script src="factories/actorFactory.js"></script>
+  <script src="factories/commandContainerFactory.js"></script>
   <script src="factories/commandFactory.js"></script>
   <script src="factories/levelFactory.js"></script>
   <script src="factories/tileFactory.js"></script>
@@ -44,6 +45,5 @@
   <script src="directives/commandBank.js"></script>
   <script src="directives/gameBoard.js"></script>
   <script src="directives/gameMenu.js"></script>
-  <script src="directives/level.js"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@ app.service('commandFactory', function() {
   };
 
   this.executeRotateLeft = function(command, actor, gameContext) {
-    actor.rotateRight(command.direction);
+    actor.rotateLeft(command.direction);
     gameContext.commandFinished();
   };
 
@@ -54,7 +54,7 @@ app.service('commandFactory', function() {
 
 
   this.executeForLoop = function(command, actor, gameContext) {
-    gameContext.executeCodeBlock(command.contents);
+    gameContext.executeCodeBlock(command.contents, 3);
     // gameContext.commandFinished();
   };
 
@@ -105,8 +105,9 @@ app.service('commandFactory', function() {
     if( currentCollision(actor, gameContext.gameData.GetCurrentMap()) )
     {
       command.isValid = false;
+      command.errorMessage = "Characters can not be moved off the map.";
       command.currentlyExecuting = false;
-      gameContext.currentlyExecuting = false; // Yes, this is not defined. However, by accessing an undefined variable, code execution is halted. That is a desired effect.
+      gameContext.currentlyExecuting = false;
     }
     gameContext.commandFinished();
   };

@@ -9,6 +9,15 @@
        dnd-type="'command'"
        class="grabable command">
     {{command.name}}
+
+
+    <!--Recursive Container.-->
+    <div
+      class="dropzone"
+      dnd-accept="['command']"
+      ng-if="command.name=='For Loop' || command.name=='If Wall in Front'">
+      <div ng-include="'list.html'" ng-init="list=command.contents" style="height:100%"></div>
+    </div>
   </div>
   <div class="command-placeholder dndPlaceholder"></div>
 </div>

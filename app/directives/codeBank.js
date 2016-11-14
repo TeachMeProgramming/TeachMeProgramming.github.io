@@ -11,10 +11,11 @@ app.directive('codeBank', function()
   }
 });
 
-app.controller('codeBankController', function($scope)
+app.controller('codeBankController', function($scope, CommandContainerFactory)
 {
-  $scope.codeBank = [];
-  $scope.list=$scope.codeBank; // used for nesting code.
+  $scope.codeBank = CommandContainerFactory.makeCommandContainer('Code');
+  $scope.list=$scope.codeBank.contents; // used for nesting code.
+
 
   $scope.mouseIn = function($event)
   {

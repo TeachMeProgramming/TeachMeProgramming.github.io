@@ -1,6 +1,6 @@
 <script type="text/ng-template" id="list.html">
 
-  <!-- dnd-list = The name of the container we are droppping commands into. set list with ng-init before using ng-include-->
+  <!-- dnd-list = The name of the container we are dropping commands into. set list with ng-init before using ng-include-->
   <div dnd-list="list"
        dnd-accept="['command']"
        class="dropzone">
@@ -28,6 +28,7 @@
   ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid}"
   ng-mouseover="mouseIn($event)"
   ng-mouseout="mouseOut($event)">
+  <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
   {{command.name}}
 
 
@@ -39,14 +40,16 @@
          <div ng-include="'list.html'" ng-init="list=command.contents" style="height:100%"></div>
   </div>
 </div>
-
 <div
   class="command-invalid-tooltip"
   ng-if="command.isValid==false">
-
-  Characters can not be moved off the map.
+  {{command.errorMessage}}
 </div>
 </script>
+
+
+
+
 
 
 
@@ -54,6 +57,6 @@
 
 
 
-<div ng-include="'list.html'" style="height:100%">
+<div ng-include="'list.html'" style="height:100%;"> // the first list variable is set in the codeBankController.
 </div>
 
