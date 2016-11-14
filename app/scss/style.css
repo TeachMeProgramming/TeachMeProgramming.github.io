@@ -1,0 +1,422 @@
+@-webkit-keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@-moz-keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@-ms-keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@keyframes mymove {
+  from {
+    transform: translate(2px, 0px); }
+  to {
+    transform: translate(20px, 0px); } }
+@-webkit-keyframes mymove {
+  0% {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@-moz-keyframes mymove {
+  0% {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@-ms-keyframes mymove {
+  0% {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@keyframes mymove {
+  0% {
+    transform: translate(0px, 0px); }
+  25% {
+    transform: translate(7px, 0px); }
+  50% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(-7px, 0px); }
+  100% {
+    transform: translate(0px, 0px); } }
+* {
+  margin: 0;
+  padding: 0;
+  border: 1px solid black; }
+
+body {
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: #000; }
+
+body, html {
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden; }
+
+header {
+  width: 100%;
+  background-color: #222222;
+  height: auto;
+  display: flex;
+  color: #EEE; }
+
+footer {
+  background-color: #222222;
+  color: #EEE;
+  padding: 0 50px; }
+
+.game-screen {
+  display: flex;
+  flex-direction: row;
+  flex: 1; }
+
+.header-title {
+  margin: auto;
+  margin-left: 100px;
+  user-select: none;
+  display: inline-block;
+  float: left; }
+
+.actor {
+  position: absolute;
+  -webkit-transition: linear, left 1.5s, top 1.5s, -webkit-transform 1.5s;
+  transition: linear, left 1.5s, top 1.5s, transform 1.5s; }
+
+.actor-box {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.game-container {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  width: auto;
+  height: auto;
+  flex: 1; }
+
+.game-board-container {
+  position: absolute;
+  float: left;
+  margin-right: 10px;
+  width: auto;
+  height: auto; }
+
+.row, .cell {
+  font-size: 0; }
+
+.cell {
+  width: 64px; }
+
+.actor {
+  width: 64px; }
+
+.command-container {
+  float: right;
+  display: inline-block;
+  background: #666;
+  color: #CCC;
+  padding: 5px;
+  height: 100%;
+  width: 20%;
+  font-size: 150%; }
+
+.dropzone {
+  height: 90%;
+  background: #999;
+  padding: 3px;
+  min-height: 40px;
+  border-radius: 5px; }
+
+.dndDraggingSource {
+  display: none; }
+
+.command {
+  position: relative;
+  min-height: 50px;
+  padding: 5px;
+  background: #333;
+  border: 2px solid #bbb;
+  color: #CCC;
+  border-radius: 5px; }
+
+.command-placeholder {
+  height: 50px;
+  background: #DDD;
+  border: 2px solid #bbb;
+  border-radius: 5px; }
+
+.command-executing {
+  background: #393; }
+
+.command-shine {
+  /*   positioning */
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  /*   gradient   */
+  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(1%, rgba(255, 255, 255, 0.03)), color-stop(30%, rgba(255, 255, 255, 0.85)), color-stop(50%, rgba(255, 255, 255, 0.85)), color-stop(70%, rgba(255, 255, 255, 0.85)), color-stop(71%, rgba(255, 255, 255, 0.85)), color-stop(100%, rgba(255, 255, 255, 0)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
+  /* IE6-9 */
+  /*  forming the shine element
+      play around with the width, skew and gradient to get different effects
+    */
+  width: 15%;
+  height: 100%;
+  transform: skew(-10deg, 0deg);
+  -webkit-transform: skew(-10deg, 0deg);
+  -moz-transform: skew(-10deg, 0deg);
+  -ms-transform: skew(-10deg, 0deg);
+  -o-transform: skew(-10deg, 0deg);
+  /*  animating it  */
+  animation: move 1.5;
+  animation-iteration-count: infinite;
+  -webkit-animation: move 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-transform: skew(-10deg, 0deg);
+  -moz-animation: move 1.5s;
+  -moz-animation-iteration-count: infinite;
+  -ms-transform: skew(-10deg, 0deg);
+  -ms-animation: move 1.5s;
+  -ms-animation-iteration-count: infinite;
+  -o-transform: skew(-10deg, 0deg);
+  -o-animation: move 1.5s;
+  -o-animation-iteration-count: infinite; }
+
+.command-invalid {
+  background: #933;
+  animation: mymove 0.2s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 3;
+  /* Safari 4.0 - 8.0, according to w3schools. See http:;//www.w3schools.com/cssref/css3_pr_animation-iteration-count.asp*/
+  animation-iteration-count: 3; }
+
+.command-invalid-tooltip {
+  background: #B55;
+  position: absolute;
+  transform: translatex(-110%) translatey(-100%);
+  margin-top: -4px;
+  padding: 5px;
+  border: 1px solid #933;
+  border-radius: 5px; }
+
+.command-invalid-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #B55; }
+
+.button-container {
+  display: inline-block;
+  padding: 0 10px;
+  float: left;
+  margin-left: 10px;
+  padding: 10px 0 10px 0; }
+
+.button {
+  background-color: #163ea2;
+  float: left;
+  width: 120px;
+  padding: 10px;
+  margin: 0px 5px;
+  border-radius: 3px; }
+
+.button:hover {
+  cursor: pointer;
+  background-color: #2359e1; }
+
+.button-disable {
+  background-color: #444;
+  float: left;
+  padding: 10px;
+  margin: 0 5px;
+  color: #777; }
+
+.button-disable:hover {
+  cursor: default;
+  background-color: #444;
+  color: #777; }
+
+.grabable {
+  cursor: -moz-grab;
+  cursor: -webkit-grab; }
+
+.grabable-hover {
+  background-color: #888; }
+
+.tooltip {
+  outline: none; }
+
+.tooltip:hover {
+  text-decoration: none; }
+
+.tooltip span {
+  z-index: 10;
+  display: none;
+  padding: 14px 20px;
+  margin: -30px 0 0 28px;
+  width: 300px;
+  line-height: 16px; }
+
+.tooltip span:hover {
+  display: inline;
+  position: absolute;
+  color: #111;
+  border: 1px solid #DCA;
+  background: #fffAF0; }
+
+.dropdown-container {
+  text-align: left;
+  margin: 0;
+  padding: 15px 4px 17px 0;
+  list-style: none;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-size: 150%;
+  width: 100px; }
+  .dropdown-container ul {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    dipslay: none;
+    z-index: 10;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transiton: opacity .2s;
+    -moz-transition: opacity .2s;
+    -ms-transition: opacity .2s;
+    -o-transition: opacity .2s;
+    -transition: opacity .2s; }
+    .dropdown-container ul li {
+      padding: 15px;
+      background: #555;
+      display: block;
+      color: #fff;
+      text-shadow: 0 -1px 0 #000; }
+    .dropdown-container ul li:hover {
+      background: #333; }
+
+.dropdown {
+  font: bold 12px/18px sans-serif;
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  padding: 15px 20px;
+  background: #fff;
+  cursor: pointer; }
+
+/*  */
+@keyframes move {
+  0% {
+    left: 0;
+    opacity: 0; }
+  5% {
+    opacity: 0.0; }
+  48% {
+    opacity: 0.2; }
+  80% {
+    opacity: 0.0; }
+  100% {
+    left: 82%; } }
+@-webkit-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0; }
+  5% {
+    opacity: 0.0; }
+  48% {
+    opacity: 0.2; }
+  80% {
+    opacity: 0.0; }
+  100% {
+    left: 82%; } }
+@-moz-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0; }
+  5% {
+    opacity: 0.0; }
+  48% {
+    opacity: 0.2; }
+  80% {
+    opacity: 0.0; }
+  100% {
+    left: 88%; } }
+@-ms-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0; }
+  5% {
+    opacity: 0.0; }
+  48% {
+    opacity: 0.2; }
+  80% {
+    opacity: 0.0; }
+  100% {
+    left: 82%; } }
+@-o-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0; }
+  5% {
+    opacity: 0.0; }
+  48% {
+    opacity: 0.2; }
+  80% {
+    opacity: 0.0; }
+  100% {
+    left: 82%; } }
+
+/*# sourceMappingURL=style.css.map */
