@@ -29,15 +29,39 @@
   ng-mouseover="mouseIn($event)"
   ng-mouseout="mouseOut($event)">
   <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
+
+
+
+
+
   {{command.name}}
 
 
-  <!--Recursive Container.-->
+  <div ng-if="command.name=='For Loop'">
+
+
+
+    <div class = "dropdown-container">
+      <div class="dropdown-menu" ng-if="command.name=='For Loop'">
+        {{command.loops}}
+      </div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+  </div>
+
+<!--Recursive Container.-->
   <div
     class="dropzone"
     dnd-accept="['command']"
     ng-if="command.name=='For Loop' || command.name=='If Wall in Front'">
-         <div ng-include="'list.html'" ng-init="list=command.contents" style="height:100%"></div>
+
+        <div ng-include="'list.html'" ng-init="list=command.contents" style="height:100%"></div>
+
   </div>
 </div>
 <div

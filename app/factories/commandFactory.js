@@ -44,7 +44,7 @@ app.service('commandFactory', function() {
       class: 'command',
       contents: [], // the commands we iterate through when running the forLoop.
       name: 'For Loop', // must be named For Loop to be compatible with the ng-if (display dropzone) in codeBank.html.
-      direction: 'left',
+      loops: 3,
       currentlyExecuting: false,
       isValid: true,
       functionName: 'executeForLoop'
