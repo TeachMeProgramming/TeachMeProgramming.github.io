@@ -148,13 +148,16 @@ footer {
   padding: 5px;
   height: 100%;
   width: 20%;
-  font-size: 150%; }
+  font-size: 150%;
+  overflow: hidden; }
 
 .dropzone {
   height: 90%;
   background: #999;
   padding: 3px;
+  float: left;
   min-height: 40px;
+  width: 100%;
   border-radius: 5px; }
 
 .dndDraggingSource {
@@ -163,14 +166,18 @@ footer {
 .command {
   position: relative;
   min-height: 50px;
-  padding: 5px;
   background: #333;
   border: 2px solid #bbb;
-  color: #CCC;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+.command-title {
+  position: relative;
+  color: #CCC;
+  width: auto;
+  float: left; }
 
 .command-placeholder {
   height: 50px;
@@ -182,6 +189,18 @@ footer {
 
 .command-executing {
   background: #393; }
+
+.command-shine-container {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none; }
+
+.command-shine-display {
+  display: inline; }
 
 .command-shine {
   /*   positioning */
@@ -322,19 +341,16 @@ footer {
 .dropdown-menu {
   text-align: left;
   margin: 0;
-  padding: 15px 4px 17px 0;
   list-style: none;
   position: relative;
-  font-size: 150%;
-  width: 100px; }
+  font-size: 150%; }
 
 .dropdown-container {
+  position: relative;
   text-align: left;
   margin: 0;
   list-style: none;
-  position: relative;
-  font-size: 150%;
-  width: 100px;
+  float: left;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
@@ -370,36 +386,44 @@ footer {
   background: #fff;
   cursor: pointer; }
 
+.clearfix:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both; }
+
 /*  */
 @keyframes translateRight {
   0% {
-    left: 0; }
+    left: -10%; }
   100% {
-    left: 90%;
+    left: 105%;
     opacity: 0.5; } }
 @-webkit-keyframes translateRight {
   0% {
-    left: 0; }
+    left: -10%; }
   100% {
-    left: 90%;
+    left: 105%;
     opacity: 0.5; } }
 @-moz-keyframes translateRight {
   0% {
-    left: 0; }
+    left: -10%; }
   100% {
-    left: 90%;
+    left: 105%;
     opacity: 0.5; } }
 @-ms-keyframes translateRight {
   0% {
-    left: 0; }
+    left: -10%; }
   100% {
-    left: 90%;
+    left: 105%;
     opacity: 0.5; } }
 @-o-keyframes translateRight {
   0% {
-    left: 0; }
+    left: -10%; }
   100% {
-    left: 90%;
+    left: 105%;
     opacity: 0.5; } }
 
 /*# sourceMappingURL=style.css.map */

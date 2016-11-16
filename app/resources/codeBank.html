@@ -1,4 +1,4 @@
-<script type="text/ng-template" id="list.html">
+<script type="text/ng-template" id="dropzone.html">
 
   <!-- dnd-list = The name of the container we are dropping commands into. set list with ng-init before using ng-include-->
   <div dnd-list="list"
@@ -18,50 +18,40 @@
   </div>
 </script>
 
-
-
-
-
 <script type="text/ng-template" id="item.html">
 <div
   class="grabable command"
   ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid}"
   ng-mouseover="mouseIn($event)"
   ng-mouseout="mouseOut($event)">
-  <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
 
 
-
-
-
-  {{command.name}}
-
-
-  <div ng-if="command.name=='For Loop'">
-
-
-
-    <div class = "dropdown-container">
-      <div class="dropdown-menu" ng-if="command.name=='For Loop'">
-        {{command.loops}}
-      </div>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-      </ul>
-    </div>
+  <div class="command-title">
+    {{command.name}}
   </div>
 
-<!--Recursive Container.-->
+  <div ng-if="command.name=='For Loop'" class = "dropdown-container">
+    <div class="dropdown-menu" ng-if="command.name=='For Loop'">
+      {{command.loops}}
+    </div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+
+
   <div
-    class="dropzone"
+    class="clearfix"
     dnd-accept="['command']"
-    ng-if="command.name=='For Loop' || command.name=='If Wall in Front'">
+    ng-if="command.name=='For Loop' || command.name=='If Wall in Front'"
+    ng-include="'dropzone.html'" ng-init="list=command.contents" style="height:100%">
+  </div>
 
-        <div ng-include="'list.html'" ng-init="list=command.contents" style="height:100%"></div>
-
+  <div class="command-shine-container"  ng-class="{'command-shine-display': command.currentlyExecuting}">
+    <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
   </div>
 </div>
 <div
@@ -71,16 +61,8 @@
 </div>
 </script>
 
-
-
-
-
-
-
 <p class="command-container-title">Code</p>
 
-
-
-<div ng-include="'list.html'" style="height:100%;"> // the first list variable is set in the codeBankController.
+<div ng-include="'dropzone.html'" style="height:100%;"> // the first list variable is set in the codeBankController.
 </div>
 

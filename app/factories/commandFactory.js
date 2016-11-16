@@ -44,7 +44,7 @@ app.service('commandFactory', function() {
       class: 'command',
       contents: [], // the commands we iterate through when running the forLoop.
       name: 'For Loop', // must be named For Loop to be compatible with the ng-if (display dropzone) in codeBank.html.
-      loops: 3,
+      loops: 5,
       currentlyExecuting: false,
       isValid: true,
       functionName: 'executeForLoop'
@@ -54,7 +54,7 @@ app.service('commandFactory', function() {
 
 
   this.executeForLoop = function(command, actor, gameContext) {
-    gameContext.executeCodeBlock(command.contents, 3);
+    gameContext.executeCodeBlock(command.contents, command.loops);
     // gameContext.commandFinished();
   };
 

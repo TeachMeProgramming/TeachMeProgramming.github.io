@@ -17,7 +17,7 @@ app.controller('gameController', function($scope, $timeout, commandFactory) {
 
 
 
-  var timeoutDuration = 1000;
+  var timeoutDuration = 1500; // make sure this matches the animation durations in style.scss.
 
 
 
