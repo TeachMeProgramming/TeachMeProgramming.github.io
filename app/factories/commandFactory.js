@@ -3,6 +3,9 @@
  */
 app.service('commandFactory', function() {
 
+
+
+  var command =
   this.rotateRight = function()
   {
     return {
@@ -29,7 +32,8 @@ app.service('commandFactory', function() {
       direction: 'left',
       currentlyExecuting: false,
       isValid: true,
-      functionName: 'executeRotateLeft'
+      functionName: 'executeRotateLeft',
+      mouseOver: false
     };
   };
 
@@ -47,7 +51,8 @@ app.service('commandFactory', function() {
       loops: 5,
       currentlyExecuting: false,
       isValid: true,
-      functionName: 'executeForLoop'
+      functionName: 'executeForLoop',
+      mouseOver: false
     };
   };
 
@@ -67,7 +72,8 @@ app.service('commandFactory', function() {
       direction: 'up',
       currentlyExecuting: false,
       isValid: true,
-      functionName: 'executeMove'
+      functionName: 'executeMove',
+      mouseOver: false
     };
   };
 
@@ -122,7 +128,8 @@ app.service('commandFactory', function() {
       direction: 'left',
       currentlyExecuting: false,
       isValid: true,
-      functionName: 'executeIfStatement'
+      functionName: 'executeIfStatement',
+      mouseOver: false
     };
   };
 

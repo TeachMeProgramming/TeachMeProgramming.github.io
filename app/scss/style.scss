@@ -72,6 +72,7 @@
 * {
   margin: 0;
   padding: 0;
+  //border: 1px solid;
 }
 
 body {
@@ -122,12 +123,12 @@ footer {
   float: left;
 }
 
-.actor{
+.actor {
   position: absolute;
   @include translationTransition(1.5s);
 }
 
-.actor-box{
+.actor-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -136,7 +137,7 @@ footer {
 /////////////////////
 ///   GAME BOARD  ///
 /////////////////////
-.game-container{
+.game-container {
   position: relative;
   float: left;
   margin-right: 10px;
@@ -148,7 +149,7 @@ footer {
 // Game board container is used to draw different components of the level on top of each other.
 // For example, actors have to draw on top of the level map.
 // This is because game-container is position:relative and game-board-container is position:absolute.
-.game-board-container{
+.game-board-container {
   position: absolute;
   float: left;
   margin-right: 10px;
@@ -161,22 +162,22 @@ footer {
 // See https://css-tricks.com/fighting-the-space-between-inline-block-elements/ for details.
 // Warning: chrome does not display this properly at 80% and 90% zoom.
 // Other zoom levels are fine. (54.0.2840.71 m (64-bit))
-.row, .cell{
+.row, .cell {
   font-size: 0;
 }
 
-.cell{
+.cell {
   width: 64px;
 }
 
-.actor{
+.actor {
   width: 64px;
 }
 
 /////////////////////
 /// COMMAND ZONES ///
 /////////////////////
-.command-container{
+.command-container {
   display: inline-block;
   color: #CCC;
   padding: 5px;
@@ -188,23 +189,22 @@ footer {
 
 
 
-
+// As long as command height is bigger than all the containg elements, drag and drop does not have the seizure glitch.
 $commandMargin: 5px ;// Space inbetween commands. Needed to calculate the position of command tooltips.
 $commandHeight: 50px ;// CommandHeight. Needed for placeholder elements.
 $tooltipBorderWidth: 1px ;// command-invalid-tooltip red border.
 $dropzoneBGColor: #bbb;
 
-.dropzone{
+.dropzone {
+  order: 2;
   height: 90%;
   background: #999;
   padding: 3px;
-  float: left;
-  min-height: 40px;
-  width: 100%;
+  min-height: $commandHeight;
   @include roundCorners;
 }
 
-.dndDraggingSource{
+.dndDraggingSource {
   display: none;
 }
 
@@ -213,8 +213,14 @@ $dropzoneBGColor: #bbb;
 /////////////////////
 ///    COMMAND    ///
 /////////////////////
-.command{
+.command {
   position:relative;
+
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+
   min-height: $commandHeight;
   //padding: 5px;
   background: #333; // #333440; Eventually we will want our theme to be tinted slightly.
@@ -223,23 +229,29 @@ $dropzoneBGColor: #bbb;
   @include boxShadow(0.2);
 }
 
-.command-title{
-  position:relative;
+
+
+.command-hover {
+  background-color: #666;
+  @include boxShadow(0.5);
+}
+
+.command-title {
+  display: inline-block;
   color: #CCC;
   width: auto;
-  float: left;
   //margin: 10px 20px;
 }
 
 
-.command-placeholder{
+.command-placeholder {
   height: $commandHeight;
   background: #DDD;
   @include roundCorners;
   @include boxShadow(0.7);
 }
 
-.command-executing{
+.command-executing {
   background: #393;
 }
 
@@ -252,10 +264,6 @@ $dropzoneBGColor: #bbb;
   height: 100%;
   top: 0;
   left: 0;
-  display: none; // keep the hidden container that lies on top of commands hidden to preserve drag and drop functionality
-}
-.command-shine-display {
-  display: inline;
 }
 
 .command-shine {
@@ -306,12 +314,12 @@ $dropzoneBGColor: #bbb;
   //-o-animation-delay: 1s;
 }
 
-.command-invalid{
+.command-invalid {
   background: #933;
   @include shake;
 }
 
-.command-invalid-tooltip{
+.command-invalid-tooltip {
   background: #B55;
   position: absolute;
   transform: translatex(-110%) translatey(-100%) ;// Translatex to position the tooltip to the left of the command, translatey to align with the command. The translatey goes hand in hand with margin-top.
@@ -339,7 +347,7 @@ $dropzoneBGColor: #bbb;
 /////////////////////
 ///     BUTTON    ///
 /////////////////////
-.button-container{
+.button-container {
   display: inline-block;
   padding: 0 10px;
   float: left;
@@ -347,7 +355,7 @@ $dropzoneBGColor: #bbb;
   padding: 10px 0 10px 0;
 }
 
-.button{
+.button {
   background-color: #163ea2;
   float: left;
   width: 120px;
@@ -355,12 +363,12 @@ $dropzoneBGColor: #bbb;
   margin: 0px 5px;
   border-radius: 3px;}
 
-.button:hover{
+.button:hover {
   cursor: pointer;
   background-color: #2359e1;
 }
 
-.button-disable{
+.button-disable {
   background-color: #444;
   float: left;
   padding: 10px;
@@ -368,20 +376,17 @@ $dropzoneBGColor: #bbb;
   color: #777;
 }
 
-.button-disable:hover{
+.button-disable:hover {
   cursor: default;
   background-color: #444;
   color: #777;
 }
 
-.grabable{
+
+
+.grabable {
   cursor: -moz-grab;
   cursor: -webkit-grab;
-}
-
-.grabable-hover{
-  background-color: #666;
-  @include boxShadow(0.5);
 }
 
 
@@ -424,6 +429,7 @@ $dropzoneBGColor: #bbb;
 /////////////////////
 
 .dropdown-menu {
+  display: inline-block;
   text-align: left;
   margin: 0;
   list-style: none;
@@ -431,18 +437,16 @@ $dropzoneBGColor: #bbb;
   font-size: 150%;
 }
 
-
-
 .dropdown-container {
+  display: inline-block;
   position: relative;
   text-align: left;
   margin: 0;
   list-style: none;
   //font-size: 150%;
   //width:100px;
-  float: left;
+  //float: left;
   @include boxShadow(0.3);
-
 
   ul {
     position: absolute;
@@ -458,8 +462,6 @@ $dropzoneBGColor: #bbb;
     -o-transition: opacity .2s;
     -transition: opacity .2s;
 
-
-
     li {
       padding: 15px;
       background: #555;
@@ -467,7 +469,6 @@ $dropzoneBGColor: #bbb;
       color: #fff;
       text-shadow: 0 -1px 0 #000;
     }
-
 
     li:hover {
       background: #333;

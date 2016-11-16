@@ -23,7 +23,6 @@ app.controller('gameMenu', function($scope)
 
     $scope.codeBank.contents.forEach(function(command) {
       command.isValid = true;
-      //command.target.classList.remove("grabable-hover"); // CURRENTLY DOES NOT WORK
     });
 
 

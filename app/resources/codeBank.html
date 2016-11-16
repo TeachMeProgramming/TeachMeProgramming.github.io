@@ -21,27 +21,31 @@
 <script type="text/ng-template" id="item.html">
 <div
   class="grabable command"
-  ng-class="{'command-executing': command.currentlyExecuting, 'command-invalid': !command.isValid}"
-  ng-mouseover="mouseIn($event)"
-  ng-mouseout="mouseOut($event)">
+  ng-class="{'command-executing': command.currentlyExecuting,
+             'command-invalid':  !command.isValid,
+             'command-hover':     command.mouseOver,
+             }"
+  ng-mouseover="mouseIn($event, command)"
+  ng-mouseout="mouseOut($event, command)">
 
 
-  <div class="command-title">
-    {{command.name}}
-  </div>
-
-  <div ng-if="command.name=='For Loop'" class = "dropdown-container">
-    <div class="dropdown-menu" ng-if="command.name=='For Loop'">
-      {{command.loops}}
+  <div>
+    <div class="command-title">
+      {{command.name}}
     </div>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-    </ul>
-  </div>
 
+    <div ng-if="command.name=='For Loop'" class = "dropdown-container">
+      <div class="dropdown-menu" ng-if="command.name=='For Loop'">
+        {{command.loops}}
+      </div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+  </div>
 
   <div
     class="clearfix"
@@ -50,7 +54,7 @@
     ng-include="'dropzone.html'" ng-init="list=command.contents" style="height:100%">
   </div>
 
-  <div class="command-shine-container"  ng-class="{'command-shine-display': command.currentlyExecuting}">
+  <div class="command-shine-container" ng-show="command.currentlyExecuting">
     <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
   </div>
 </div>

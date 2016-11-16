@@ -16,18 +16,14 @@ app.controller('codeBankController', function($scope, CommandContainerFactory)
   $scope.codeBank = CommandContainerFactory.makeCommandContainer('Code');
   $scope.list=$scope.codeBank.contents; // used for nesting code.
 
-
-  $scope.mouseIn = function($event)
+  $scope.mouseIn = function($event, command)
   {
-    if($event.target.classList.contains('command'))
-    {
-      $event.target.classList.add("grabable-hover");
-      $event.stopPropagation();
-    }
+    command.mouseOver = true;
+    $event.stopPropagation();
   };
 
-  $scope.mouseOut = function($event)
+  $scope.mouseOut = function($event, command)
   {
-    $event.target.classList.remove("grabable-hover");
+    command.mouseOver = false;
   };
 });
