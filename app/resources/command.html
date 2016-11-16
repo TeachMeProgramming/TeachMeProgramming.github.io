@@ -1,0 +1,36 @@
+<div
+  class="grabable command"
+  ng-class="{'command-executing': command.currentlyExecuting,
+           'command-invalid':  !command.isValid,
+           'command-hover':     command.mouseOver,
+           }"
+  ng-mouseover="mouseIn($event, command)"
+  ng-mouseout="mouseOut($event, command)">
+
+
+  <div>
+    <div class="command-title">
+      {{command.name}}
+    </div>
+
+    <for-loop-options ng-if="command.name=='For Loop'" class = "dropdown-container">
+    </for-loop-options>
+  </div>
+
+  <div
+    dnd-accept="['command']"
+    ng-if="command.name=='For Loop' || command.name=='If Wall in Front'"
+    ng-include="'resources/dropzone.html'" ng-init="list=command.contents" style="height:100%">
+  </div>
+
+  <div class="command-shine-container" ng-show="command.currentlyExecuting">
+    <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
+  </div>
+</div>
+
+
+<div
+  class="command-invalid-tooltip"
+  ng-if="command.isValid==false">
+  {{command.errorMessage}}
+</div>

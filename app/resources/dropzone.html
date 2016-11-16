@@ -1,0 +1,16 @@
+<!-- dnd-list = The name of the container we are dropping commands into. set list with ng-init before using ng-include-->
+<div dnd-list="list"
+     dnd-accept="['command']"
+     class="dropzone">
+  <div ng-repeat="command in list"
+       dnd-draggable="command"
+       dnd-effect-allowed="move"
+       dnd-moved="list.splice($index, 1)"
+       dnd-type="'command'">
+
+
+    <div ng-include="'resources/command.html'" style="height:100%"></div>
+  </div>
+
+  <div class="command-placeholder dndPlaceholder"></div>
+</div>
