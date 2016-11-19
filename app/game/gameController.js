@@ -42,11 +42,16 @@ app.controller('gameController', function($scope, $timeout, commandFactory) {
 
     var commandContext = {block: codeBlock, index: 0, loopsRemaining: timesToRepeat};
 
-    // test for empty nested commands.
-    if(commandContext.block.length == 0)
-    {
-      var commandContext = stack[stack.length-1];
-      var command = commandContext.block[commandContext.index];
+
+
+    // test for empty code block.
+    /*
+    if(stack.length == 0) {
+
+    } else */ if(commandContext.block.length == 0) {
+      // Find the command that represents the parent code block, and give it an error message.
+      var codeBlockContext = stack[stack.length-1]; // get the most recent context on the stack.
+      var command = codeBlockContext.block[codeBlockContext.index];
       command.isValid = false;
       command.errorMessage = "For loops can not be empty.";
       command.currentlyExecuting = false;

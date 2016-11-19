@@ -143,14 +143,12 @@ footer {
 .actor {
   width: 64px; }
 
-.command-container {
-  display: inline-block;
+.command-zone-container {
   color: #CCC;
   padding: 5px;
   height: 100%;
   width: 20%;
-  font-size: 150%;
-  overflow: hidden; }
+  font-size: 150%; }
 
 .dropzone {
   order: 2;
@@ -162,6 +160,9 @@ footer {
 
 .dndDraggingSource {
   display: none; }
+
+.command-container {
+  position: relative; }
 
 .command {
   position: relative;
@@ -225,8 +226,6 @@ footer {
   /* IE10+ */
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
-  /* IE6-9 */
   /*  forming the shine element
       play around with the width, skew and gradient to get different effects
     */
@@ -262,12 +261,13 @@ footer {
   animation-iteration-count: 3; }
 
 .command-invalid-tooltip {
-  background: #B55;
+  background: #933;
   position: absolute;
-  transform: translatex(-110%) translatey(-100%);
-  margin-top: -4px;
+  top: 50%;
+  transform: translateX(-110%) translateY(-50%);
   padding: 5px;
   border: 1px solid #933;
+  min-height: 48px;
   border-radius: 5px; }
 
 .command-invalid-tooltip::after {
@@ -278,7 +278,7 @@ footer {
   left: 100%;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent transparent #B55; }
+  border-color: transparent transparent transparent #933; }
 
 .button-container {
   display: inline-block;

@@ -1,3 +1,14 @@
+
+
+<!-- Invalid tooltip has to be above the command to make it directly to the left of the command.
+     Don't nest the tooltip inside the command. The command shakes when there is an error.
+     The tooltip shaking is an undesired effect. -->
+<div
+  class="command-invalid-tooltip"
+  ng-if="command.isValid==false">
+  {{command.errorMessage}}
+</div>
+
 <div
   class="grabable command"
   ng-class="{'command-executing': command.currentlyExecuting,
@@ -26,11 +37,4 @@
   <div class="command-shine-container" ng-show="command.currentlyExecuting">
     <div ng-class="{'command-shine': command.currentlyExecuting}"></div>
   </div>
-</div>
-
-
-<div
-  class="command-invalid-tooltip"
-  ng-if="command.isValid==false">
-  {{command.errorMessage}}
 </div>

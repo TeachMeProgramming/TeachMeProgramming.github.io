@@ -1,4 +1,12 @@
 <!-- dnd-list = The name of the container we are dropping commands into. set list with ng-init before using ng-include-->
+
+<div
+  class="command-invalid-tooltip"
+  ng-if="command.isValid==false">
+  {{command.errorMessage}}
+</div>
+
+
 <div dnd-list="list"
      dnd-accept="['command']"
      class="dropzone">
@@ -9,7 +17,7 @@
        dnd-type="'command'">
 
 
-    <div ng-include="'resources/command.html'" style="height:100%"></div>
+    <div ng-include="'resources/command.html'" class="command-container"></div>
   </div>
 
   <div class="command-placeholder dndPlaceholder"></div>

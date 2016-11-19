@@ -181,22 +181,18 @@ footer {
 /////////////////////
 /// COMMAND ZONES ///
 /////////////////////
-.command-container {
-  display: inline-block;
+.command-zone-container {
   color: #CCC;
   padding: 5px;
   height: 100% ;// Let the command zones take up all the space between header and footer
   width: 20%;
   font-size: 150%;
-  overflow: hidden;
 }
-
 
 
 // As long as command height is bigger than all the containg elements, drag and drop does not have the seizure glitch.
 $commandMargin: 5px ;// Space inbetween commands. Needed to calculate the position of command tooltips.
 $commandHeight: 50px ;// CommandHeight. Needed for placeholder elements.
-$tooltipBorderWidth: 1px ;// command-invalid-tooltip red border.
 $dropzoneBGColor: #bbb;
 
 .dropzone {
@@ -217,6 +213,12 @@ $dropzoneBGColor: #bbb;
 /////////////////////
 ///    COMMAND    ///
 /////////////////////
+
+
+.command-container { // Wraps both the command and the error tooltip to allow for vertical centering of the tooltip.
+  position: relative;
+}
+
 .command {
   position:relative;
 
@@ -284,7 +286,6 @@ $dropzoneBGColor: #bbb;
   background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* IE10+ */
   background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 
   /*  forming the shine element
       play around with the width, skew and gradient to get different effects
@@ -300,52 +301,53 @@ $dropzoneBGColor: #bbb;
   /*  animating it  */
   animation: translateRight 1.5;
   animation-iteration-count: infinite;
-  //animation-delay: 1s;
+
   -webkit-animation: translateRight 1.5s;
   -webkit-animation-iteration-count: infinite;
-  //-webkit-animation-delay: 1s;
+
   -moz-transform: skew(-10deg,0deg);
   -moz-animation: translateRight 1.5s;
   -moz-animation-iteration-count: infinite;
-  //-moz-animation-delay: 1s;
+
   -ms-transform: skew(-10deg,0deg);
   -ms-animation: translateRight 1.5s;
   -ms-animation-iteration-count: infinite;
-  //-ms-animation-delay: 1s;
+
   -o-transform: skew(-10deg,0deg);
   -o-animation: translateRight 1.5s;
   -o-animation-iteration-count: infinite;
-  //-o-animation-delay: 1s;
 }
 
+$errorColor: #933;
+
 .command-invalid {
-  background: #933;
+  background: $errorColor;
   @include shake;
 }
 
 .command-invalid-tooltip {
-  background: #B55;
+  background: $errorColor;
   position: absolute;
-  transform: translatex(-110%) translatey(-100%) ;// Translatex to position the tooltip to the left of the command, translatey to align with the command. The translatey goes hand in hand with margin-top.
-  margin-top: -($commandMargin - $tooltipBorderWidth) ;// tooltips are larger because of the border. In order to center vertically, we have to take that into account.
+  top: 50%; // The top and the translateY(-50%) allow for centering of the tooltip.
+  transform: translateX(-110%) translateY(-50%); // TranslateX to position the tooltip to the left of the command, translateY to align with the command. The translateY goes hand in hand with margin-top.
+  // margin-top: -($commandMargin) ;// tooltips are larger because of the border. In order to center vertically, we have to take that into account.
   padding: 5px;
-  border: $tooltipBorderWidth solid #933;
+  border: 1px solid $errorColor; // needed to erase a small gap between the tooltip and the triangle reminder.
+  min-height: $commandHeight - 2; // If the command and the tool tip are not the same height, centering is difficult. -2 to account for the border width when centering.
   @include roundCorners;
 }
 
-
-// Triangle label.
-.command-invalid-tooltip::after {// CSS triangle http://codepen.io/chriscoyier/pen/lotjh
+// Triangle label. // For an explanation of how this works, see CSS triangle http://codepen.io/chriscoyier/pen/lotjh
+.command-invalid-tooltip::after {
   content: "";
   position: absolute;
   top: 50% ;// center vertically.
   transform: translateY(-50%) ;// center vertically.
-  left: 100% ;// the width of this element.
+  left: 100% ; // Position on the right side of the tooltip.
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent transparent #B55;
+  border-color: transparent transparent transparent $errorColor;
 }
-
 
 
 /////////////////////
