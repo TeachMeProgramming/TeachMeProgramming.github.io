@@ -16,6 +16,14 @@ app.controller('gameMenu', function($scope)
   $scope.currentlyExecuting = false;
 
 
+
+  $scope.onDrop = function(list, item)
+  {
+    item.mouseOver = false;
+    return item;
+  };
+
+
   $scope.runCodeClicked = function () {
     if($scope.currentlyExecuting || $scope.codeBank.length <= 0) return;
     $scope.currentlyExecuting = true; // executeCodeLine() checks for this every frame. Be sure to set it before executeCodeLine()!

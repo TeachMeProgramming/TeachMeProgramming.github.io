@@ -3,11 +3,12 @@
 
 <div dnd-list="list"
      dnd-accept="['command']"
+     dnd-drop="onDrop(list, item)"
      class="dropzone">
   <div ng-repeat="command in list"
        dnd-draggable="command"
        dnd-effect-allowed="move"
-       dnd-moved="list.splice($index, 1)"
+       dnd-moved="command.mouseOver = false; list.splice($index, 1)"
        dnd-type="'command'">
 
 
