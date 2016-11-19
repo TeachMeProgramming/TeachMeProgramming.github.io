@@ -6,6 +6,7 @@
          ng-class="{'button-disable': currentlyExecuting }"
          ng-click="runCodeClicked()">Run Code</md-button>
     <md-button class="button"
+         ng-class="{'button-disable': !currentlyExecuting }"
          ng-click="resetCodeClicked();">Reset Level</md-button>
   </div>
 

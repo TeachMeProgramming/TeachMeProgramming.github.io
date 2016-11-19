@@ -12,8 +12,9 @@
 <div
   class="grabable command"
   ng-class="{'command-executing': command.currentlyExecuting,
-           'command-invalid':  !command.isValid,
-           'command-hover':     command.mouseOver,
+           'command-invalid':    !command.isValid,
+           'command-hover':       command.mouseOver,
+           'command-no-drag':     currentlyExecuting
            }"
   ng-mouseover="mouseIn($event, command)"
   ng-mouseout="mouseOut($event, command)">

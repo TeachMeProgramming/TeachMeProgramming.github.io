@@ -44,17 +44,23 @@ app.controller('gameController', function($scope, $timeout, commandFactory) {
 
 
 
-    // test for empty code block.
-    /*
-    if(stack.length == 0) {
-
-    } else */ if(commandContext.block.length == 0) {
+    if(commandContext.block.length == 0) {
       // Find the command that represents the parent code block, and give it an error message.
-      var codeBlockContext = stack[stack.length-1]; // get the most recent context on the stack.
-      var command = codeBlockContext.block[codeBlockContext.index];
-      command.isValid = false;
-      command.errorMessage = "For loops can not be empty.";
-      command.currentlyExecuting = false;
+
+      if($scope.codeBank.contents.length == 0) // If there are no commands at all in the codeBank.
+      {
+        $scope.codeBank.isValid = false;
+        $scope.codeBank.errorMessage = "Don't forget to drag commands from the Commands panel to the Code panel."
+      }
+      else
+      {
+        var codeBlockContext = stack[stack.length-1]; // get the most recent context on the stack.
+        var command = codeBlockContext.block[codeBlockContext.index];
+        command.isValid = false;
+        command.errorMessage = "For loops can not be empty.";
+        command.currentlyExecuting = false;
+
+      }
     }
     else {
       stack.push(commandContext); // Once the current command finishes, this data is needed to determine the next command to execute.

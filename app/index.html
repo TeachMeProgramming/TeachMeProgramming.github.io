@@ -23,18 +23,20 @@
     </screen> -->
 
 
-  <div class="game-screen">
-    <game-board class="game-container"></game-board>
+    <div class="game-screen">
+      <div class="no-drag" ng-if="currentlyExecuting">
+      </div>
 
-    <!-- <div class="victory-container">
+      <game-board class="game-container"></game-board>
+      <!-- <div class="victory-container">
+      </div>
+      <div class="victory">
+        VICTORY
+      </div>
+      -->
+      <code-bank></code-bank>
+      <command-bank></command-bank>
     </div>
-    <div class="victory">
-      VICTORY
-    </div>
-    -->
-    <code-bank data-split-pane-component class="command-zone-container"></code-bank>
-    <command-bank data-split-pane-component class="command-zone-container"></command-bank>
-  </div>
 
   <footer>© Ian Gallacher</footer>
 

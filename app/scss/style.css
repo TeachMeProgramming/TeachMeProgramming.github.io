@@ -100,7 +100,8 @@ footer {
   display: flex;
   flex-direction: row;
   flex: 1;
-  position: relative; }
+  position: relative;
+  height: 100%; }
 
 .header-title {
   margin: auto;
@@ -118,6 +119,13 @@ footer {
   position: absolute;
   top: 0;
   left: 0; }
+
+.no-drag {
+  width: 100%;
+  height: 100%;
+  z-index: 19;
+  position: absolute;
+  top: 0; }
 
 .game-container {
   position: relative;
@@ -143,12 +151,15 @@ footer {
 .actor {
   width: 64px; }
 
-.command-zone-container {
+code-bank, command-bank {
   color: #CCC;
-  padding: 5px;
   height: 100%;
   width: 20%;
   font-size: 150%; }
+
+.command-zone-container {
+  padding: 5px;
+  height: 100%; }
 
 .dropzone {
   order: 2;
@@ -177,6 +188,11 @@ footer {
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
 
+.command-no-drag {
+  background: #777;
+  color: #999;
+  border-color: #999; }
+
 .command-hover {
   background-color: #666;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -184,9 +200,7 @@ footer {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
 
 .command-title {
-  display: inline-block;
-  color: #CCC;
-  width: auto; }
+  display: inline-block; }
 
 .command-placeholder {
   height: 50px;
@@ -197,7 +211,8 @@ footer {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7); }
 
 .command-executing {
-  background: #393; }
+  background: #393;
+  color: #ccc; }
 
 .command-shine-container {
   overflow: hidden;
@@ -264,7 +279,7 @@ footer {
   background: #933;
   position: absolute;
   top: 50%;
-  transform: translateX(-110%) translateY(-50%);
+  transform: translateX(-105%) translateY(-50%);
   padding: 5px;
   border: 1px solid #933;
   border-radius: 5px; }
@@ -359,10 +374,7 @@ footer {
   position: relative;
   text-align: left;
   margin: 0;
-  list-style: none;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+  list-style: none; }
   .dropdown-container ul {
     position: absolute;
     top: 45px;

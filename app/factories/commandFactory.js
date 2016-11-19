@@ -114,6 +114,8 @@ app.service('commandFactory', function() {
       command.isValid = false;
       command.errorMessage = "Characters can not be moved off the map.";
       command.currentlyExecuting = false;
+
+
       gameContext.currentlyExecuting = false;
     }
     gameContext.commandFinished();

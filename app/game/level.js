@@ -222,6 +222,8 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
     setupActors();
 
 
+    $scope.codeBank.isValid = true;
+    $scope.codeBank.errorMessage = '';
     var validateChildCommandsRecursively = function(codeBlock) {
       codeBlock.forEach(function(command) {
         command.isValid = true;

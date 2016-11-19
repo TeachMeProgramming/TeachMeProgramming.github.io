@@ -1,23 +1,24 @@
-<p class="command-container-title">Commands</p>
-<div dnd-list="commandBank"
-     dnd-accept="['command']"
-     class="dropzone">
-  <div ng-repeat="command in commandBank"
-       dnd-draggable="command"
-       dnd-effect-allowed="move"
-       dnd-moved="commandBank.splice($index, 1)"
-       dnd-type="'command'"
-       class="grabable command">
-    {{command.name}}
+<div class="command-zone-container">
+
+  <p class="command-container-title">Commands</p>
+  <div dnd-list="commandBank"
+       dnd-accept="['command']"
+       class="dropzone">
 
 
-    <!--Recursive Container.-->
-    <div
-      class="dropzone"
-      dnd-accept="['command']"
-      ng-if="command.name=='For Loop' || command.name=='If Wall in Front'">
-      <div ng-include="'resources/dropzone.html'" ng-init="list=command.contents" style="height:100%"></div>
+
+    <div ng-repeat="command in commandBank"
+         dnd-draggable="command"
+         dnd-effect-allowed="move"
+         dnd-moved="commandBank.splice($index, 1)"
+         dnd-type="'command'">
+
+
+      <div ng-include="'resources/command.html'" class="command-container"></div>
+
     </div>
+
+
+    <div class="command-placeholder dndPlaceholder"></div>
   </div>
-  <div class="command-placeholder dndPlaceholder"></div>
 </div>

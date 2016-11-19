@@ -12,6 +12,8 @@ app.service('CommandContainerFactory', function() {
       name: containerName,
       contents: [],
       currentlyExecuting: false,
+      isValid: true,
+      errorMessage: '',
 
 
       // Functions

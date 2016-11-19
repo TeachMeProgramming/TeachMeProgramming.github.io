@@ -1,5 +1,12 @@
-<p class="command-container-title">Code</p>
+<div
+  class="command-invalid-tooltip"
+  ng-if="codeBank.isValid==false">
+  {{codeBank.errorMessage}}
+</div>
 
-<div ng-include="'resources/dropzone.html'" style="height:100%;"> // the first list variable is set in the codeBankController.
+<div class="command-zone-container" ng-class="{'command-invalid': !codeBank.isValid}">
+  <p class="command-container-title">Code</p>
+  <div ng-include="'resources/dropzone.html'" style="height:100%;"> <!-- the first list variable is set in the codeBankController. -->
+  </div>
 </div>
 
