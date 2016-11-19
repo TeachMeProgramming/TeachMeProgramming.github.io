@@ -333,7 +333,6 @@ $errorColor: #933;
   // margin-top: -($commandMargin) ;// tooltips are larger because of the border. In order to center vertically, we have to take that into account.
   padding: 5px;
   border: 1px solid $errorColor; // needed to erase a small gap between the tooltip and the triangle reminder.
-  min-height: $commandHeight - 2; // If the command and the tool tip are not the same height, centering is difficult. -2 to account for the border width when centering.
   @include roundCorners;
 }
 

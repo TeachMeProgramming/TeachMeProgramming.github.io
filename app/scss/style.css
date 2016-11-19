@@ -267,7 +267,6 @@ footer {
   transform: translateX(-110%) translateY(-50%);
   padding: 5px;
   border: 1px solid #933;
-  min-height: 48px;
   border-radius: 5px; }
 
 .command-invalid-tooltip::after {
