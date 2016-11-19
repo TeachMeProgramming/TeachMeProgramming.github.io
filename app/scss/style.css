@@ -311,16 +311,6 @@ footer {
   background-color: #444;
   color: #777; }
 
-.button-run {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 100%;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent transparent #B55; }
-
 .grabable {
   cursor: -moz-grab;
   cursor: -webkit-grab; }

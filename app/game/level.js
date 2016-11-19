@@ -15,7 +15,7 @@ app.directive('level', function()
 
 
 // I possibly want to watch this manually so I don't have to apply it to the scope?
-var currentLevel = 2;
+var currentLevel = 0;
 
 
 
@@ -39,7 +39,7 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
       ],
       [ // Level 3
         "forLoop",
-        "move",
+        "move"
       ],
       [ // Level 4
         "forLoop",

@@ -386,17 +386,6 @@ $dropzoneBGColor: #bbb;
   color: #777;
 }
 
-.button-run {
-  content: "";
-  position: absolute;
-  top: 50% ;// center vertically.
-  transform: translateY(-50%) ;// center vertically.
-  left: 100% ;// the width of this element.
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent transparent #B55;
-}
-
 
 
 .grabable {
