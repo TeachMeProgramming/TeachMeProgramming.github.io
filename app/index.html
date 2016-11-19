@@ -15,13 +15,27 @@
 
 
 <body ng-app="app" ng-controller="gameController">
-  <game-menu></game-menu>
-    <main data-split-pane class="game-screen">
-      <game-board class="game-container"></game-board>
 
-      <code-bank data-split-pane-component class="command-container"></code-bank>
-      <command-bank data-split-pane-component class="command-container"></command-bank>
-    </main>
+
+  <game-menu></game-menu>
+<!-- for level transitions
+    <screen ng-repeat="i in [].constructor(1) track by $index" ng-init="currentLevel=$index" class="game-screen">
+    </screen> -->
+
+
+  <div class="game-screen">
+    <game-board class="game-container"></game-board>
+
+    <!-- <div class="victory-container">
+    </div>
+    <div class="victory">
+      VICTORY
+    </div>
+    -->
+    <code-bank data-split-pane-component class="command-container"></code-bank>
+    <command-bank data-split-pane-component class="command-container"></command-bank>
+  </div>
+
   <footer>© Ian Gallacher</footer>
 
 
@@ -46,5 +60,6 @@
   <script src="directives/forLoopOptions.js"></script>
   <script src="directives/gameBoard.js"></script>
   <script src="directives/gameMenu.js"></script>
+  <script src="directives/screen.js"></script>
 </body>
 </html>

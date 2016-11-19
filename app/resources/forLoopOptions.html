@@ -1,9 +1,6 @@
-<div class="dropdown-menu" ng-if="command.name=='For Loop'">
+<div class="dropdown-menu" ng-if="command.name=='For Loop'" ng-mouseover="mouseIn($event, command)" ng-click="command.dropdownOpen = !command.dropdownOpen;" >
   {{command.loops}}
 </div>
-<ul ng-mouseover="mouseIn($event, command)">
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
+<ul ng-mouseover="mouseIn($event, command)" ng-show="command.dropdownOpen">
+  <li ng-repeat="i in [].constructor(5) track by $index" ng-click="command.dropdownOpen=false; command.loops=$index+1;">{{$index+1}}</li>
 </ul>

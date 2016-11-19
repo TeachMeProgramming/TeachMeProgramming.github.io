@@ -113,6 +113,7 @@ footer {
   display: flex;
   flex-direction: row;
   flex: 1;
+  position: relative;
 }
 
 .header-title {
@@ -165,6 +166,9 @@ footer {
 .row, .cell {
   font-size: 0;
 }
+
+
+//
 
 .cell {
   width: 64px;
@@ -382,6 +386,17 @@ $dropzoneBGColor: #bbb;
   color: #777;
 }
 
+.button-run {
+  content: "";
+  position: absolute;
+  top: 50% ;// center vertically.
+  transform: translateY(-50%) ;// center vertically.
+  left: 100% ;// the width of this element.
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #B55;
+}
+
 
 
 .grabable {
@@ -435,9 +450,20 @@ $dropzoneBGColor: #bbb;
   list-style: none;
   position: relative;
   font-size: 150%;
+  cursor: pointer;
+}
+.dropdown-menu:after {
+  content: "";
+  position: absolute;
+  top: 50% ;// center vertically.
+  left: 100% ;// the width of this element.
+  border-width: 8px;
+  border-style: solid;
+  border-color: #B55 transparent transparent transparent;
 }
 
 .dropdown-container {
+  cursor: pointer;
   display: inline-block;
   position: relative;
   text-align: left;
@@ -486,6 +512,30 @@ $dropzoneBGColor: #bbb;
   cursor: pointer;
 }
 
+
+/////////////////////
+///    VICTORY    ///
+/////////////////////
+
+.victory-container {
+  background: white;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.victory {
+  color: white;
+  position: absolute;
+  font-size: 500%;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translatex(-50%) translatey(-50%);
+}
 
 
 

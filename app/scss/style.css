@@ -99,7 +99,8 @@ footer {
 .game-screen {
   display: flex;
   flex-direction: row;
-  flex: 1; }
+  flex: 1;
+  position: relative; }
 
 .header-title {
   margin: auto;
@@ -310,6 +311,16 @@ footer {
   background-color: #444;
   color: #777; }
 
+.button-run {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #B55; }
+
 .grabable {
   cursor: -moz-grab;
   cursor: -webkit-grab; }
@@ -341,9 +352,20 @@ footer {
   margin: 0;
   list-style: none;
   position: relative;
-  font-size: 150%; }
+  font-size: 150%;
+  cursor: pointer; }
+
+.dropdown-menu:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #B55 transparent transparent transparent; }
 
 .dropdown-container {
+  cursor: pointer;
   display: inline-block;
   position: relative;
   text-align: left;
@@ -383,6 +405,24 @@ footer {
   padding: 15px 20px;
   background: #fff;
   cursor: pointer; }
+
+.victory-container {
+  background: white;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.victory {
+  color: white;
+  position: absolute;
+  font-size: 500%;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translatex(-50%) translatey(-50%); }
 
 /*  */
 @keyframes translateRight {
