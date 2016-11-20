@@ -10,25 +10,25 @@ app.service('tileFactory', function(actorFactory) {
 
   this.emptyTile = function() {
     return {
-      src: "/LearnToCode/app/images/empty.png"
+      src: "/app/images/empty.png"
     }
   };
 
   this.pathTile = function() {
     return {
-      src: "/LearnToCode/app/images/GridTile.png"
+      src: "/app/images/GridTile.png"
     }
   };
 
   this.exitTile = function() {
     return {
-      src: "/LearnToCode/app/images/Goal.png"
+      src: "/app/images/Goal.png"
     }
   };
 
   this.playerTile = function() {
     return {
-      src: "/LearnToCode/app/images/GridTile.png"
+      src: "/app/images/GridTile.png"
     }
   };
 
