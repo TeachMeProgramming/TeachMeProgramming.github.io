@@ -230,6 +230,8 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
     var validateChildCommandsRecursively = function(codeBlock) {
       codeBlock.forEach(function(command) {
         command.isValid = true;
+        command.currentlyExecuting = false;
+        
         if(command.contents && command.contents.length > 0)
           validateChildCommandsRecursively(command.contents);
       });
