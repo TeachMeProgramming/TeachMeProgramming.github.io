@@ -25,13 +25,13 @@
       {{command.name}}
     </div>
 
-    <for-loop-options ng-if="command.name=='For Loop'" class = "dropdown-container">
+    <for-loop-options ng-if="command.name=='Repeat'" class = "dropdown-container">
     </for-loop-options>
   </div>
 
   <div
     dnd-accept="['command']"
-    ng-if="command.name=='For Loop' || command.name=='If Wall in Front'"
+    ng-if="command.name=='Repeat' || command.name=='If Wall in Front'"
     ng-include="'resources/dropzone.html'" ng-init="list=command.contents" style="height:100%">
   </div>
 

@@ -57,9 +57,8 @@ app.controller('gameController', function($scope, $timeout, commandFactory) {
         var codeBlockContext = stack[stack.length-1]; // get the most recent context on the stack.
         var command = codeBlockContext.block[codeBlockContext.index];
         command.isValid = false;
-        command.errorMessage = "For loops can not be empty.";
+        command.errorMessage = "Repeat commands can not be empty.";
         command.currentlyExecuting = false;
-
       }
     }
     else {
