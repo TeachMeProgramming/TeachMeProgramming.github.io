@@ -14,7 +14,7 @@
   ng-class="{'command-executing': command.currentlyExecuting,
            'command-invalid':    !command.isValid,
            'command-hover':       command.mouseOver,
-           'command-no-drag':     currentlyExecuting
+           'command-no-drag':     !isLevelReset
            }"
   ng-mouseover="mouseIn($event, command)"
   ng-mouseout="mouseOut($event, command)">

@@ -5,6 +5,10 @@
 
 app.controller('gameController', function($scope, $timeout, commandFactory) {
 
+  $scope.currentlyExecuting = false; // Code executes until it encounters an error or the level is reset.
+  $scope.isLevelReset = true; // No commands on the level can be selected until the level is reset.
+
+
   var gameContext = $scope;
 
   // Definition of terms:
@@ -23,6 +27,8 @@ app.controller('gameController', function($scope, $timeout, commandFactory) {
 
 
   $scope.startCodeExecution = function(){
+    $scope.currentlyExecuting = true; // executeCodeLine() checks for this every frame. Be sure to set it before executeCodeLine()!
+    $scope.isLevelReset = false;
     $scope.executeCodeBlock($scope.codeBank.contents);
   };
 

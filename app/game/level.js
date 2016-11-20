@@ -181,7 +181,8 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
     // setupActors and setupCommands are dependant on the currentLevel variable being set properly.
 
     $scope.map = tileFactory.parseMap(gameData.GetCurrentMap());
-    $scope.resetActors();
+
+    $scope.resetLevel();
     setupCommands();
   };
 
@@ -215,8 +216,10 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
   setupActors();
   setupCommands();
 
-  $scope.resetActors = function() {
+  $scope.resetLevel = function() {
+
     $scope.currentlyExecuting = false;
+    $scope.isLevelReset = true;
 
     $scope.actors = [];
     setupActors();

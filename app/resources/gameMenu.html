@@ -3,16 +3,15 @@
 
   <div class="button-container">
     <md-button class="button"
-         ng-class="{'button-disable': currentlyExecuting }"
+         ng-class="{'button-disable': !isLevelReset }"
          ng-click="runCodeClicked()">Run Code</md-button>
     <md-button class="button"
-         ng-class="{'button-disable': !currentlyExecuting }"
+         ng-class="{'button-disable': isLevelReset }"
          ng-click="resetCodeClicked();">Reset Level</md-button>
   </div>
 
 
 
-  <!--
   <div class="button-container">
     <md-button class="button"
          ng-class="{'button-disable': !gameData.mapData.hasOwnProperty(currentLevel-1) }"
@@ -22,7 +21,6 @@
          ng-class="{'button-disable': !gameData.mapData.hasOwnProperty(currentLevel+1) }"
          ng-click="nextLevel();">Next Level</md-button>
   </div>
- -->
 
   <h4 class="header-title md-display-1">Level: {{currentLevel+1}}</h4>
 </header>

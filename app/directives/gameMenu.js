@@ -13,20 +13,15 @@ app.directive('gameMenu', function()
 
 app.controller('gameMenu', function($scope)
 {
-  $scope.currentlyExecuting = false;
-
-
-
   $scope.onDrop = function(list, item)
   {
-    item.mouseOver = false;
+    item.mouseOver = false; // if a user drops a command, but the command location does not end up under the mouse cursor, the command is no longer highlighted.
     return item;
   };
 
 
   $scope.runCodeClicked = function () {
     if($scope.currentlyExecuting || $scope.codeBank.length <= 0) return;
-    $scope.currentlyExecuting = true; // executeCodeLine() checks for this every frame. Be sure to set it before executeCodeLine()!
 
 
     $scope.codeBank.contents.forEach(function(command) {
@@ -38,6 +33,6 @@ app.controller('gameMenu', function($scope)
   };
 
   $scope.resetCodeClicked = function () {
-    $scope.resetActors();
+    $scope.resetLevel();
   };
 });
