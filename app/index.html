@@ -25,15 +25,21 @@
 
     <div class="game-screen">
       <div class="no-drag" ng-if="!isLevelReset">
+        <!-- nest the victory button inside the no-drag class to allow the button to be pressed -->
+        <div ng-if="playerWon">
+        <div class="victory-container">
+          <div class="victory">
+            VICTORY
+          </div>
+          <md-button class="button victory-button"
+                     ng-if="gameData.mapData.hasOwnProperty(currentLevel+1)"
+                     ng-click="nextLevel();">Next Level</md-button>
+        </div>
+      </div>
       </div>
 
       <game-board class="game-container"></game-board>
-      <!-- <div class="victory-container">
-      </div>
-      <div class="victory">
-        VICTORY
-      </div>
-      -->
+
       <code-bank></code-bank>
       <command-bank></command-bank>
     </div>

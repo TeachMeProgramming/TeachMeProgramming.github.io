@@ -171,6 +171,8 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
 
 
   $scope.setLevel = function(level) {
+    $scope.playerWon = false;
+
     currentLevel = level;
     $scope.currentLevel = currentLevel;
 
@@ -196,11 +198,18 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
     $scope.setLevel(currentLevel+1);
   };
 
+
+  var playerWon = function() {
+    $scope.playerWon = true;
+  };
+
+
+
   $scope.checkVictory = function() {
     // If the the following line of code throws an error, Make sure the map has a victory square.
     if($scope.player.x == $scope.victorySquare.x && $scope.player.y == $scope.victorySquare.y)
     {
-      $scope.nextLevel();
+      playerWon();
     }
   };
 
@@ -231,7 +240,7 @@ app.controller('levelController', function($scope, tileFactory, actorFactory, co
       codeBlock.forEach(function(command) {
         command.isValid = true;
         command.currentlyExecuting = false;
-        
+
         if(command.contents && command.contents.length > 0)
           validateChildCommandsRecursively(command.contents);
       });

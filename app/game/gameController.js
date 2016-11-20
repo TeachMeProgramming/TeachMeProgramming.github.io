@@ -8,6 +8,8 @@ app.controller('gameController', function($scope, $timeout, commandFactory) {
   $scope.currentlyExecuting = false; // Code executes until it encounters an error or the level is reset.
   $scope.isLevelReset = true; // No commands on the level can be selected until the level is reset.
 
+  $scope.playerWon = false; // Should the victory screen be showing?
+
 
   var gameContext = $scope;
 

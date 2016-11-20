@@ -262,7 +262,7 @@ $dropzoneBGColor: #999;
 
 .command-title {
   display: inline-block;
-  //margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 
@@ -378,12 +378,15 @@ $errorColor: #933;
 }
 
 .button {
+  font-size: 125%;
   background-color: #163ea2;
   float: left;
   width: 120px;
   padding: 10px;
   margin: 0px 5px;
-  border-radius: 3px;}
+  border-radius: 3px;
+  text-align: center;
+}
 
 .button:hover {
   cursor: pointer;
@@ -524,8 +527,7 @@ $errorColor: #933;
 /////////////////////
 
 .victory-container {
-  background: white;
-  opacity: 0.3;
+  background-color: rgba(255,255,255,0.3); // We can't use opacity, because opacity can't be overwritten by children.
   width: 100%;
   height: 100%;
   position: absolute;
@@ -538,14 +540,23 @@ $errorColor: #933;
   position: absolute;
   font-size: 500%;
   align-items: center;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translatex(-50%) translatey(-50%);
 }
 
 
-
-
+.victory-button {
+  color: #ccc;
+  font-size: 200%;
+  position: absolute;
+  text-align: center;
+  top: 55%;
+  left: 50%;
+  transform: translatex(-50%);
+  width: auto;
+  padding: 20px;
+}
 
 
 

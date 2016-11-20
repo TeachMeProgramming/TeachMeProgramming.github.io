@@ -33,6 +33,7 @@ app.controller('gameMenu', function($scope)
   };
 
   $scope.resetCodeClicked = function () {
+    if($scope.playerWon) return; // Don't let the button be pressed on victory screens.
     $scope.resetLevel();
   };
 });
