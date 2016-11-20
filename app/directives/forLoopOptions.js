@@ -5,7 +5,7 @@ app.directive('forLoopOptions', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/LearnToCode/app/resources/forLoopOptions.html',
+    templateUrl: '/app/resources/forLoopOptions.html',
     scope: true, // make our own mouseOver functions.
     controller: 'forLoopOptionsController'
   }

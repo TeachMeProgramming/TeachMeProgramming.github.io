@@ -5,7 +5,7 @@ app.directive('commandBank', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/LearnToCode/app/resources/commandBank.html',
+    templateUrl: '/app/resources/commandBank.html',
     scope: false,
     controller: 'commandBankController'
   }
@@ -13,5 +13,5 @@ app.directive('commandBank', function()
 
 app.controller('commandBankController', function($scope, commandFactory)
 {
-  
+
 });

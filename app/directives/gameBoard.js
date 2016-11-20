@@ -5,7 +5,7 @@ app.directive('gameBoard', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/LearnToCode/app/resources/gameBoard.html',
+    templateUrl: '/app/resources/gameBoard.html',
     scope: false,
   }
 });

@@ -5,7 +5,7 @@ app.directive('screen', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/LearnToCode/app/resources/screen.html',
+    templateUrl: '/app/resources/screen.html',
     scope: false,
     controller: 'screenController'
   }
