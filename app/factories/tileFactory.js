@@ -22,7 +22,7 @@ app.service('tileFactory', function(actorFactory) {
 
   this.exitTile = function() {
     return {
-      src: "/LearnToCode/app/images/coin.png"
+      src: "/LearnToCode/app/images/Goal.png"
     }
   };
 
