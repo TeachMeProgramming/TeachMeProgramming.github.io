@@ -5,7 +5,7 @@ app.directive('commandBank', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/app/resources/commandBank.html',
+    templateUrl: '/resources/commandBank.html',
     scope: false,
     controller: 'commandBankController'
   }

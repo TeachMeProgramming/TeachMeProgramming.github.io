@@ -5,7 +5,7 @@ app.directive('level', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/app/resources/level.html',
+    templateUrl: '/resources/level.html',
     scope: false,
     controller: 'levelController'
   }

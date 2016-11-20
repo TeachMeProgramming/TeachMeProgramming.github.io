@@ -5,7 +5,7 @@ app.directive('screen', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/app/resources/screen.html',
+    templateUrl: '/resources/screen.html',
     scope: false,
     controller: 'screenController'
   }

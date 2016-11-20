@@ -9,7 +9,7 @@ app.service('actorFactory', function() {
       x : x,
       y: y,
       rotation : 0,//0,
-      src: "/app/images/hero.png",
+      src: "/images/hero.png",
 
 
       move: function() {

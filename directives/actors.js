@@ -6,7 +6,7 @@ app.directive('actors', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/app/resources/actor.html',
+    templateUrl: '/resources/actor.html',
     scope: false,
     controller: 'actorsController'
   }

@@ -5,7 +5,7 @@ app.directive('codeBank', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/app/resources/codeBank.html',
+    templateUrl: '/resources/codeBank.html',
     scope: false,
     controller: 'codeBankController'
   }

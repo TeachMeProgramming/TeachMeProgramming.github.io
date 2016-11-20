@@ -5,7 +5,7 @@ app.directive('gameMenu', function()
 {
   return {
     restrict: 'E',
-    templateUrl: '/app/resources/gameMenu.html',
+    templateUrl: '/resources/gameMenu.html',
     scope: false,
     controller: 'gameMenu'
   }
